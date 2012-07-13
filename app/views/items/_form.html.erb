@@ -1,0 +1,13 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+		<%= f.input :description, :required => true, :label => "Descricao"%>
+		<%= f.input :lost_date, :required => true, :label => "Data que o item foi perdido"%>
+		
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

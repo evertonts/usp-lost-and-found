@@ -1,4 +1,6 @@
 UspLostAndFound::Application.routes.draw do
+  resources :items
+
   authenticated :user do
     root :to => 'home#index'
   end
