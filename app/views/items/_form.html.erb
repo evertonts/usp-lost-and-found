@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
 		<%= f.input :description, :required => true, :label => "Descricao"%>
-		<%= f.input :lost_date, :required => true, :label => "Data que o item foi perdido"%>
+		<%= f.input :lost_date, :required => true, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado") %>
 		
   </div>
 

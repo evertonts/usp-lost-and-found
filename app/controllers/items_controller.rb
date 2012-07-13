@@ -10,6 +10,26 @@ class ItemsController < ApplicationController
     end
   end
 
+  def new_lost
+    @item = Item.new
+    @item.lost = true
+
+    respond_to do |format|
+      format.html # new_lost.html.erb
+      format.json { render json: @item }
+    end
+  end
+  
+  def new_found
+    @item = Item.new
+    @item.lost = false
+    
+    respond_to do |format|
+      format.html # new_found.html.erb
+      format.json { render json: @item }
+    end
+  end
+  
   # GET /items/1
   # GET /items/1.json
   def show
@@ -17,17 +37,6 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @item }
-    end
-  end
-
-  # GET /items/new
-  # GET /items/new.json
-  def new
-    @item = Item.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @item }
     end
   end
