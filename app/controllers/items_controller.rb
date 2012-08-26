@@ -58,4 +58,10 @@ class ItemsController < ApplicationController
     @item.destroy
   end
   
+  def search
+    
+    
+    render :search_lost
+  end
+  
 end

@@ -1,6 +1,7 @@
 def create_lost_item
   visit 'items/new_lost'
   fill_in "Descricao", :with => "novo item"
+  fill_in "Recompensa", :with => 10.0
   select_date("1/1/2011", :from => "Data que o item foi perdido")
   click_button "Create"
 end
@@ -13,9 +14,10 @@ def create_found_item
 end
 
 def recover_item
-  create_lost_iten
-  visit ''
-  
+  create_lost_item
+  visit '/items/1/edit'
+  check('item_returned')
+  click_button "Update Item"
 end
 
 When /^I create a new lost item$/ do
@@ -27,7 +29,7 @@ When /^I create a new found item$/ do
 end
 
 When /^I mark an item as recovered$/ do
-  pending # express the regexp above with the code you wish you had
+  recover_item
 end
 
 Then /^I should see an item created message$/ do
@@ -35,5 +37,5 @@ Then /^I should see an item created message$/ do
 end
 
 Then /^I should see an item recovered message$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Item recuperado"
 end

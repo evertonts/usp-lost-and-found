@@ -1,10 +1,28 @@
-<%= simple_form_for(@item) do |f| %>
+<%= simple_form_for(@item, :html => {:multipart => true}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
 		<%= f.input :description, :required => true, :label => "Descricao"%>
 		<%= f.input :lost_date, :required => true, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado") %>
 		
+		<% if @item.lost? %>
+			<%= f.input :reward, :label => "Recompensa" %>
+		<% end %>
+		
+		<%= f.fields_for :assets do |asset_fields|%>
+			<%= asset_fields.file_field :asset %>
+		<%end%>
+		
+		
+		<% unless @item.new_record? %>
+			<%= f.check_box :returned, :label => "Recuperado" %>
+		<% end %>
+		
+		<%= f.fields_for :assets do |asset_fields|%>
+				<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
+		<%end%>
+		
+
   </div>
 
   <div class="form-actions">
