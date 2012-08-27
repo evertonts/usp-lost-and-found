@@ -60,8 +60,18 @@ class ItemsController < ApplicationController
   
   def search
     
+    search_hash = params[:item]
     
-    render :search_lost
+    lost = search_hash[:type] == "perdido"? true : false
+    query = search_hash[:search]
+    
+    @items = Item.find_by_sql("select * from items where lost = '#{lost}' AND description LIKE '#{query}'")
+    #@items = Item.all
+    if lost
+      render :search_lost
+    else
+      render :search_found
+    end
   end
   
 end

@@ -1,7 +1,8 @@
 <h3>Home</h3>
-	
+
+<%= link_to "Itens", items_path%>
 <%= simple_form_for(:item, :url => :search_items) do |f| %>
-  <p><%= f.input :lost, :as => :radio_buttons, :required => true, :collection => [:perdido, :encontrado] %>  </p>
-	<p><%= f.input :busca %>
+  <p><%= f.input :type, :as => :radio_buttons, :collection => [:perdido, :encontrado], input_html: {checked: true}, :label => "", required: false %>  </p>
+	<p><%= f.input :search, input_html: {value: ''}, required: false %>
 		<%= f.submit "Buscar" %>
 <% end %>
