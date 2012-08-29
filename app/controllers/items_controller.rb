@@ -56,6 +56,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
+    redirect_to items_url
   end
   
   def search
@@ -63,9 +64,8 @@ class ItemsController < ApplicationController
     search_hash = params[:item]
     
     lost = search_hash[:type] == "perdido"? true : false
-    query = search_hash[:search]
-    
-    @items = Item.find_by_sql("select * from items where lost = '#{lost}' AND description LIKE '#{query}'")
+    query = "%#{search_hash[:search]}%"    
+    @items = Item.where("lost = ? AND description LIKE ?", lost, query)
     #@items = Item.all
     if lost
       render :search_lost

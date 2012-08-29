@@ -9,6 +9,8 @@
 			<%= f.input :reward, :label => "Recompensa" %>
 		<% end %>
 		
+		<%=f.input :lost, :as => :hidden %>
+		
 		<%= f.fields_for :assets do |asset_fields|%>
 			<%= asset_fields.file_field :asset %>
 		<%end%>
