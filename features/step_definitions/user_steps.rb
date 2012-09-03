@@ -132,6 +132,10 @@ When /^I look at the list of users$/ do
   visit '/'
 end
 
+When /^I visit my profile page$/ do
+  visit "/users/" + @user.id.to_s
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -188,4 +192,8 @@ end
 Then /^I should see my name$/ do
   create_user
   page.should have_content @user[:name]
+end
+
+Then /^I should see an item "(.*?)"$/ do |item|
+  page.should have_content(item)
 end

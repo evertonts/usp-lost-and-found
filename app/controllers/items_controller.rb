@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = Item.new(params[:item])
+    @item.user = current_user
 
     if @item.save
       redirect_to @item, notice: 'Item cadastrado com sucesso.'

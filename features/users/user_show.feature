@@ -1,9 +1,11 @@
 Feature: Show Users
-  As a visitor to the website
-  I want to see registered users listed on the homepage
-  so I can know if the site has users
-
-    Scenario: Viewing users
+  As a user of the website
+  I want to see my profile page
+ 
+    Scenario: Viewing profile
       Given I exist as a user
-      When I look at the list of users
+			When I sign in with valid credentials
+			And I create a new lost item "my item"
+      And I visit my profile page
       Then I should see my name
+			And I should see an item "my item"
