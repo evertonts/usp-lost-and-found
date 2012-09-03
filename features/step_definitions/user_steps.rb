@@ -197,3 +197,9 @@ end
 Then /^I should see an item "(.*?)"$/ do |item|
   page.should have_content(item)
 end
+
+Then /^I should see the sign in page$/ do
+  page.should have_content "Entrar"
+end
+
+

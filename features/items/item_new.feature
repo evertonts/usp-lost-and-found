@@ -12,3 +12,8 @@ Feature: Create item
   	Given I am logged in
 		When I create a new found item "found item 1"
 		Then I should see an item created message
+		
+	Scenario: Visitors should not be able to create an item
+		Given I am not logged in
+		When I create a new lost item "lost item 1"
+		Then I should see the sign in page

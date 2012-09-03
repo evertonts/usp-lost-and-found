@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:create, :update, :destroy]
   
   def new_item
     @item = Item.new
@@ -38,7 +39,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @item, notice: 'Item cadastrado com sucesso.'
     else
-      render action: "new"
+      render action: @item.lost? ? "new_lost" : "new_found"
     end
   end
 
