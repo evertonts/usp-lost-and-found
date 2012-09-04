@@ -22,6 +22,10 @@ def create_user
   @user = FactoryGirl.create(:user, email: @visitor[:email])
 end
 
+def create_other_user
+  @other = FactoryGirl.create(:user, name: "Outro", email: "outro@mail.com")
+end
+
 def delete_user
   @user ||= User.first conditions: {:email => @visitor[:email]}
   @user.destroy unless @user.nil?
@@ -43,6 +47,12 @@ def sign_in
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
   click_button "Sign in"
+end
+
+def send_message message
+  visit "/users/" + @other.id.to_s
+  fill_in "Mensagem", :with => message
+  click_button "Enviar"
 end
 
 ### GIVEN ###
@@ -136,6 +146,11 @@ When /^I visit my profile page$/ do
   visit "/users/" + @user.id.to_s
 end
 
+When /^I send a message to other user "(.*?)"$/ do |message|
+  create_other_user
+  send_message(message)
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -202,4 +217,8 @@ Then /^I should see the sign in page$/ do
   page.should have_content "Entrar"
 end
 
+Then /^I should see this message on my inbox "(.*?)"$/ do |message|
+  visit "/users/" + @user.id.to_s
+  page.should have_content(message)
+end
 

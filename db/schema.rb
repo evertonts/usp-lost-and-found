@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903153352) do
+ActiveRecord::Schema.define(:version => 20120829142527) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -21,11 +21,6 @@ ActiveRecord::Schema.define(:version => 20120903153352) do
     t.integer  "item_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-  end
-
-  create_table "conversations", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -40,8 +35,11 @@ ActiveRecord::Schema.define(:version => 20120903153352) do
   end
 
   create_table "messages", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "text"
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "roles", :force => true do |t|

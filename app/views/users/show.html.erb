@@ -4,4 +4,16 @@
 	<%= item.description%>
 <% end %>
 
+<%= simple_form_for @message do |f|%>
+	<%= f.input :text, :as => :text, :label => "Mensagem" %>
+	<%= f.input :recipient_id, :as => :hidden, :input_html => {:value => @user.id}%>
+	<%= f.submit "Enviar" %>
+<% end%>
 
+<h3>Mensagens</h3>
+
+<ul>
+	<% for message in @messages %>
+		<%= message.text %>
+	<% end%>
+</ul>

@@ -8,6 +8,8 @@ UspLostAndFound::Application.routes.draw do
   devise_for :users
   resources :users, :only => [:show, :index]
   
+  resources :messages
+  
   resources :items do
     collection do
       get 'new_lost'
