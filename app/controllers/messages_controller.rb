@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
     @message.sender = current_user
     @message.recipient = params[:recipient_id]
-    @message.save
-    redirect_to :back
+    @message.save!
+    redirect_to :back, :method => :get
   end
 end

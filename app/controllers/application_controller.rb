@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  
+  protect_from_forgery
+  include SessionsHelper
+  
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
@@ -11,7 +15,15 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(resource_or_scope)
-    params[:user]["next"] || super
+    case resource_or_scope
+    when :user, User
+      store_location = session[:return_to]
+      clear_stored_location
+      (store_location.nil?) ? "/" : store_location.to_s
+    else
+      super
+    end
   end
   
-end
+end  
+
