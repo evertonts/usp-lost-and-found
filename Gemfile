@@ -21,3 +21,4 @@ gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
 gem "simple_form"
 gem "paperclip", "~> 3.0"
+gem 'rails-translate-routes'

@@ -1,3 +1,4 @@
+
 <div class="row">
 
 	<div class="two column lost title">
@@ -69,7 +70,7 @@
 				</p>
 				
 				<p class="four columns">
-					<%= item.created_at%>
+					<%=l item.created_at, format: :short%>
 				</p>
 			<% end %>
 		</div>
@@ -127,7 +128,7 @@
 				</p>
 				
 				<p class="four columns">
-					<%= item.created_at%>
+					<%=l item.created_at, format: :short%>
 				</p>
 			<% end %>
 		</div>

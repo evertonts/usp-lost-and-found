@@ -20,3 +20,8 @@ UspLostAndFound::Application.routes.draw do
   end
     
 end
+
+ActionDispatch::Routing::Translator.translate_from_file(
+  'config/locales/routes.yml', {
+    prefix_on_default_locale: false,
+    keep_untranslated_routes: true })

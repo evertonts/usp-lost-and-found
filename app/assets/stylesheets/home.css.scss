@@ -10,6 +10,18 @@ a {
 
 .box {
 	padding: 20px 40px 20px 40px;
+	
+	p {
+		margin: 5px 0px 5px 0px;
+	}
+	
+	hr {
+		margin: 10px 0px 0px 0px;
+	}
+	
+	input {
+		margin: 10px 10px 10px 0px;
+	}
 }
 
 .center {
@@ -23,7 +35,7 @@ a {
 	
 	&.bigger {
 		font-size: 1.4em;
-		margin-top: 10px;
+		margin-top: 5px;
 	}
 }
 
