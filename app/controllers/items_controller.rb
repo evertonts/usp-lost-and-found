@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :update, :destroy]
   before_filter :store_location
   
+  
   def new_item
     @item = Item.new
     @item.assets.build
