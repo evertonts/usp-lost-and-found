@@ -1,3 +1,56 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+	&.logo {
+		color: #000;
+	}
+}
+
+.box {
+	padding: 20px 40px 20px 40px;
+}
+
+.center {
+	text-align:center;
+}
+
+.title {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #FFFFFF;
+	
+	&.bigger {
+		font-size: 1.4em;
+		margin-top: 10px;
+	}
+}
+
+.lost {
+	
+	&.title {
+		color: #FF3300; 
+	}
+	
+	&.box{
+		min-height:400px; 
+		background-color:#FF3300; 
+		color:#FFFFFF;
+	}
+	a {
+		color: #FFF;
+	}
+}
+
+.found {
+	&.title {
+		color:#3399FF; 
+	}
+	
+	&.box{
+		min-height:400px; 
+		background-color:#3399FF; 
+		color:#FFFFFF;
+	}
+}

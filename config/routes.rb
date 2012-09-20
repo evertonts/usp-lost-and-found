@@ -14,7 +14,8 @@ UspLostAndFound::Application.routes.draw do
     collection do
       get 'new_lost'
       get 'new_found'
-      post 'search'
+      post 'search_lost'
+      post 'search_found'    
     end
   end
     

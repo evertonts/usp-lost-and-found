@@ -63,19 +63,22 @@ class ItemsController < ApplicationController
     redirect_to items_url
   end
   
-  def search
+  def search_lost
     
     search_hash = params[:item]
     
-    lost = search_hash[:type] == "perdido"? true : false
     query = "%#{search_hash[:search]}%"    
-    @items = Item.where("lost = ? AND description LIKE ?", lost, query)
-    #@items = Item.all
-    if lost
-      render :search_lost
-    else
-      render :search_found
-    end
+    @items = Item.where("lost = ? AND description LIKE ?", true, query)
+
+  end
+  
+  def search_found
+    
+    search_hash = params[:item]
+    
+    query = "%#{search_hash[:search]}%"    
+    @items = Item.where("lost = ? AND description LIKE ?", false, query)
+
   end
   
 end

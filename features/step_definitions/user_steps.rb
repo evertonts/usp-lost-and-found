@@ -132,7 +132,7 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
+  click_link "Editar Conta"
   fill_in "Name", :with => "newname"
   fill_in "Current password", :with => @visitor[:password]
   click_button "Update"
@@ -159,7 +159,7 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
+  page.should have_content "Cadastrar-se"
   page.should have_content "Login"
   page.should_not have_content "Logout"
 end
