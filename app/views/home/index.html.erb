@@ -1,8 +1,57 @@
-<h3>Home</h3>
+<div class="row">
 
-<%= link_to "Itens", items_path%>
+
+	<div class="two column" style="color:#FF3300; font-size:1.2em">
+		<b>EU PERDI</b>
+	</div>
+	
+	<div class="four columns">
+	</div>
+
+	<div class="two column" style="color:#3399FF; font-size:1.2em">
+		<b>EU ACHEI</b>
+	</div>
+	
+	 <div class="four columns">
+	</div>
+	
+</div>
+
+<div class="row">
+	<div class="six columns" style="height:400px; background-color:#FF3300; color:#FFFFFF;">
+		<div class="row">
+			<div class="seven columns">
+				Não encontrou seu objeto?<br/>
+				Cadastre a ocorrência aqui.
+			</div>
+			
+			<div class="five columns">
+				<a class="secondary round button" href="#">Cadastrar</a>
+			</div>
+		</div>
+		
+		<div class="row">
+
+			<div class="two columns" style="font-size: 1.2em">
+				OU
+			</div>
+			<div class="nine columns">
+				<hr/>
+			</div>
+			<div class="one column">
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="six columns" style="height:400px; background-color:#3399FF; color:#FFFFFF">
+	</div>
+</div>
+	
 <%= simple_form_for(:item, :url => :search_items) do |f| %>
   <p><%= f.input :type, :as => :radio_buttons, :collection => [:perdido, :encontrado], input_html: {checked: true}, :label => "", required: false %>  </p>
 	<p><%= f.input :search, input_html: {value: ''}, required: false %>
 		<%= f.submit "Buscar" %>
+	
+</div>
 <% end %>

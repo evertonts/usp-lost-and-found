@@ -1,4 +1,3 @@
-<%= link_to "Usp Lost And Found", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
@@ -11,7 +10,7 @@
   <% end %>
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
+    <%= link_to 'Editar Conta', edit_user_registration_path %>
     </li>
     <% if current_user.has_role? :admin %>
       <li>
@@ -20,7 +19,7 @@
     <% end %>
   <% else %>
     <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
+    <%= link_to 'Cadastrar-se', new_user_registration_path %>
     </li>
   <% end %>
 </ul>
