@@ -6,6 +6,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+gem 'therubyracer', '~> 0.9.9'
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.3.0", :group => [:development, :test]
@@ -20,3 +21,4 @@ gem "rolify", ">= 3.1.0"
 gem "zurb-foundation"
 gem "simple_form"
 gem "paperclip", "~> 3.0"
+gem "passenger", "~> 3.0.17" 
