@@ -8,6 +8,7 @@ group :assets do
 	gem 'compass-rails', '~> 1.0.3'
 	gem 'zurb-foundation', '~> 3.0.9'
 end
+gem 'therubyracer', '~> 0.9.9'
 gem 'jquery-rails'
 gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.3.0", :group => [:development, :test]
@@ -22,3 +23,4 @@ gem "rolify", ">= 3.1.0"
 gem "simple_form"
 gem "paperclip", "~> 3.0"
 gem 'rails-translate-routes'
+gem "passenger", "~> 3.0.17" 
