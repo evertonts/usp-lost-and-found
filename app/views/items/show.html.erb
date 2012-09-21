@@ -1,6 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<%= @item.returned? ? "Item recuperado" : "" %>
+<div class="row">
+	<div class="four columns">
+		<%if @item.assets.first %>
+			<%= image_tag(@item.assets.first.url(:thumb))%>
+		<% else %>
+			Esse item não possui nenhuma imagem
+		<% end %>
+	</div>
+	
+	<div class="eight columns">
+		<p>Descrição: <%= @item.description%><br/>
+		Recompensa: <%= @item.reward || "Este item não possui recompensa"%></p>
+	</div>
+	<%= @item.returned? ? "Item recuperado" : "" %>
+</div>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div class="row">
+	<%= render "messages/send_message"%>
+</div>
+
+
+<div class="row">
+	<%= link_to 'Editar', edit_item_path(@item) %> |
+	<%= link_to 'Voltar', items_path %>
+</div>

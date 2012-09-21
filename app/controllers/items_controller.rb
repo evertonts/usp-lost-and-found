@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @item = Item.find(params[:id])
+    @message = Message.new
   end
 
   # GET /items/1/edit

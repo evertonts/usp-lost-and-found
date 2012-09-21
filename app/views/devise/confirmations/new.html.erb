@@ -2,9 +2,18 @@
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
+	
+	<div class="row">
+	
+		<div class=" two columns">
+	  	<%= f.label :email %>
+		</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		<div class=" three columns">
+	  	<%= f.email_field :email %>
+		</div>
+
+	</div>
 
   <div><%= f.submit t(".submit") %></div>
 <% end %>

@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = @user.items
-    @message = Message.new
     @messages = current_user.all_messages
   end
 

@@ -47,8 +47,23 @@ a {
 	
 	&.box{
 		min-height:400px; 
-		background-color:#FF3300; 
+		
 		color:#FFFFFF;
+		
+		background-image: linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
+		background-image: -o-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
+		background-image: -moz-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
+		background-image: -webkit-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
+		background-image: -ms-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
+
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0.31, rgb(255,70,101)),
+			color-stop(0.66, rgb(255,84,68)),
+			color-stop(0.83, rgb(255,51,0))
+		);
 	}
 	a {
 		color: #FFF;
@@ -62,7 +77,22 @@ a {
 	
 	&.box{
 		min-height:400px; 
-		background-color:#3399FF; 
+		
 		color:#FFFFFF;
+		
+		background-image: linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
+		background-image: -o-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
+		background-image: -moz-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
+		background-image: -webkit-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
+		background-image: -ms-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
+
+		background-image: -webkit-gradient(
+			linear,
+			left bottom,
+			left top,
+			color-stop(0.31, rgb(102,204,255)),
+			color-stop(0.61, rgb(85,187,255)),
+			color-stop(0.83, rgb(51,153,255))
+		);
 	}
 }

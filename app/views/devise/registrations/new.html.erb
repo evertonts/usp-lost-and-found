@@ -3,16 +3,63 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+	<div class="row">
+	
+		<div class="two column">
+	  	<%= f.label :name %>
+		</div>
+	
+		<div class="three columns">
+			<%= f.text_field :name %>
+		</div>
+	
+		<div class="seven colums">
+		</div>
+	</div>
+	
+	<div class="row">
+	
+		<div class="two column">
+	  	<%= f.label :email %>
+		</div>
+	
+		<div class="three columns">
+			<%= f.email_field :email %>
+		</div>
+	
+		<div class="seven colums">
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="two column">
+			<%= f.label :password %>
+		</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit t(".submit") %></div>
+		<div class="three columns">
+			<%= f.password_field :password %>
+		</div>
+		
+		<div class="seven colums">
+		</div>
+	</div>
+	
+	<div class="row">
+		
+	  <div class="two columns">
+			<%= f.label :password_confirmation %>
+		</div>
+		
+		<div class="three columns">
+			<%= f.password_field :password_confirmation %>
+  	</div>
+		
+		<div class="seven colums">
+		</div>
+	</div>
+	
+	  <div><%= f.submit t(".submit") %></div>
+	
 <% end %>
 
 <%= render "devise/shared/links" %>

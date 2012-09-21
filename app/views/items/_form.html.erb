@@ -1,19 +1,34 @@
 <%= simple_form_for(@item, :html => {:multipart => true}) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-		<%= f.input :description, :required => true, :label => "Descricao"%>
-		<%= f.input :lost_date, :required => true, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado") %>
-		
-		<% if @item.lost? %>
-			<%= f.input :reward, :label => "Recompensa" %>
-		<% end %>
+	<div class="row">
+  	<div class="four columns">
+			<%= f.input :description, :required => true, :label => "Descricao", as: :text, :input_html => {:columns => 10, :rows => 5}%>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="three columns">
+			<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? 			"perdido" : "encontrado") %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="four columns">
+			<% if @item.lost? %>
+				<%= f.input :reward, :label => "Recompensa" %>
+			<% end %>
+		</div>
+	</div>
 		
 		<%=f.input :lost, :as => :hidden %>
 		
-		<%= f.fields_for :assets do |asset_fields|%>
-			<%= asset_fields.file_field :asset %>
-		<%end%>
+
+			<label for="aseets">Imagem</label>
+			<%= f.fields_for :assets do |asset_fields|%>
+				<%= asset_fields.file_field :asset %>
+			<%end%>
+
 		
 		
 		<% unless @item.new_record? %>
@@ -27,7 +42,7 @@
 
   </div>
 
-  <div class="form-actions">
+  <div class="row">
     <%= f.button :submit %>
   </div>
 <% end %>
