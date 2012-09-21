@@ -66,7 +66,7 @@
 			<% for item in @items_lost %>
 				<hr/>
 				<p class="eight columns">
-					<%= link_to item.description, items_path(item)%>
+					<%= link_to item.description, item_path(item)%>
 				</p>
 				
 				<p class="four columns">
@@ -124,7 +124,7 @@
 			<% for item in @items_found %>
 				<hr/>
 				<p class="eight columns">
-					<%= item.description%>
+					<%= link_to item.description, item_path(item)%>
 				</p>
 				
 				<p class="four columns">

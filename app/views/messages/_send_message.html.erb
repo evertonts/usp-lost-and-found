@@ -1,7 +1,7 @@
 <%= simple_form_for @message do |f|%>
 	<div class="row">
 		<div class="four columns">
-	<%= f.input :text, :as => :text, :label => "Mande uma mensagem para o dono deste objeto", :input_html => { :cols => 10, :rows => 3 } %>
+	<%= f.input :text, :as => :text, :label => @item.lost? ? "Mande uma mensagem para o dono deste objeto" : "Esse objeto pode ser seu? Mande uma mensagem para quem o encontrou ", :input_html => { :cols => 10, :rows => 3 } %>
 	</div>
 	</div>
 	<%= f.input :recipient_id, :as => :hidden, :input_html => {:value => @item.user.id}%>
