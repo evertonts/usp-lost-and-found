@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :item do
+    lost true
   end
 end

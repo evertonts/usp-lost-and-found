@@ -34,24 +34,30 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in "Name", :with => @visitor[:name]
-  fill_in "Email", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  fill_in "Password confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  fill_in I18n.t("activerecord.attributes.user.name"), :with => @visitor[:name]
+  fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
+  fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
+  fill_in I18n.t("activerecord.attributes.user.password_confirmation"), 
+    :with => @visitor[:password_confirmation]
+    
+  click_button I18n.t("devise.registrations.new.submit")
   find_user
 end
 
 def sign_in
   visit '/users/sign_in'
-  fill_in "Email", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  click_button "Sign in"
+  fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
+  fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
+  click_button I18n.t("devise.sessions.new.submit")
+end
+
+def create_other_users_item
+  @item = FactoryGirl.create(:item, :user_id => @other.id)
 end
 
 def send_message message
-  visit "/users/" + @other.id.to_s
-  fill_in "Mensagem", :with => message
+  visit "/items/" + @item.id.to_s
+  fill_in I18n.t("string.send_lost_message"), :with => message
   click_button "Enviar"
 end
 
@@ -133,9 +139,9 @@ end
 
 When /^I edit my account details$/ do
   click_link "Editar Conta"
-  fill_in "Name", :with => "newname"
-  fill_in "Current password", :with => @visitor[:password]
-  click_button "Update"
+  fill_in I18n.t("activerecord.attributes.user.name"), :with => "newname"
+  fill_in I18n.t("activerecord.attributes.user.current_password"), :with => @visitor[:password]
+  click_button I18n.t("devise.registrations.edit.update")
 end
 
 When /^I look at the list of users$/ do
@@ -148,6 +154,7 @@ end
 
 When /^I send a message to other user "(.*?)"$/ do |message|
   create_other_user
+  create_other_users_item
   send_message(message)
 end
 
@@ -165,43 +172,43 @@ Then /^I should be signed out$/ do
 end
 
 Then /^I see an unconfirmed account message$/ do
-  page.should have_content "You have to confirm your account before continuing."
+  page.should have_content I18n.t("devise.registrations.signed_up_but_unconfirmed")
 end
 
 Then /^I see a successful sign in message$/ do
-  page.should have_content "Signed in successfully."
+  page.should have_content I18n.t("devise.sessions.signed_in")
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  page.should have_content I18n.t("devise.registrations.signed_up")
 end
 
 Then /^I should see an invalid email message$/ do
-  page.should have_content "Email is invalid"
+  page.should have_content I18n.t("errors.messages.invalid", :email)
 end
 
 Then /^I should see a missing password message$/ do
-  page.should have_content "Password can't be blank"
+  page.should have_content I18n.t("errors.messages.blank", :password)
 end
 
 Then /^I should see a missing password confirmation message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content I18n.t("errors.messages.confirmation", :password)
 end
 
 Then /^I should see a mismatched password message$/ do
-  page.should have_content "Password doesn't match confirmation"
+  page.should have_content I18n.t("errors.messages.confirmation", :password)
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content "Signed out successfully."
+  page.should have_content I18n.t("devise.sessions.signed_out")
 end
 
 Then /^I see an invalid login message$/ do
-  page.should have_content "Invalid email or password."
+  page.should have_content I18n.t("devise.failure.invalid")
 end
 
 Then /^I should see an account edited message$/ do
-  page.should have_content "You updated your account successfully."
+  page.should have_content I18n.t("devise.registrations.updated")
 end
 
 Then /^I should see my name$/ do
@@ -214,7 +221,7 @@ Then /^I should see an item "(.*?)"$/ do |item|
 end
 
 Then /^I should see the sign in page$/ do
-  page.should have_content "Entrar"
+  page.should have_content "Login"
 end
 
 Then /^I should see this message on my inbox "(.*?)"$/ do |message|

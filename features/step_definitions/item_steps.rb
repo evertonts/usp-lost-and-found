@@ -2,29 +2,28 @@ def create_lost_item(description)
   visit '/items/new_lost'
   fill_in "Descricao", :with => description
   fill_in "Recompensa", :with => 10.0
-  select_date("1/1/2011", :from => "Data que o item foi perdido")
-  click_button "Create"
+  fill_in "Data que o item foi perdido", :with => "21/09/2012"
+  click_button "Criar Item"
 end
 
 def create_found_item(description)
   visit '/items/new_found'
   fill_in "Descricao", :with => "novo item"
-  select_date("1/1/2011", :from => "Data que o item foi encontrado")
-  click_button "Create"
+  fill_in "Data que o item foi encontrado", :with => "21/09/2012"
+  click_button "Criar Item"
 end
 
 def recover_item(description)
   create_lost_item(description)
   visit '/items/1/edit'
   check('item_returned')
-  click_button "Update Item"
+  click_button "Atualizar Item"
 end
 
 def search(description)
   visit "/"
-  choose "perdido"
-  fill_in "Search", :with => description
-  click_button "Buscar"
+  fill_in "item_search_lost", :with => description
+  click_button "buscar_perdido"
 end
 
 Given /^I have a lost item created "(.*?)"$/ do |item|

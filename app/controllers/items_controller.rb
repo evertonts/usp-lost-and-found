@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
     
     search_hash = params[:item]
     
-    query = "%#{search_hash[:search]}%"    
+    query = "%#{search_hash[:search_lost]}%"    
     @items = Item.where("lost = ? AND description LIKE ?", true, query)
 
   end
@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
     
     search_hash = params[:item]
     
-    query = "%#{search_hash[:search]}%"    
+    query = "%#{search_hash[:search_found]}%"    
     @items = Item.where("lost = ? AND description LIKE ?", false, query)
 
   end

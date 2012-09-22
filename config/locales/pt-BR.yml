@@ -208,6 +208,7 @@ pt-BR:
     models:
       user: "Usuário"
       item: "Item"
+      message: "Mensagem"
     attributes:
       user:
         name: "Nome"
@@ -220,4 +221,6 @@ pt-BR:
         description: "Descrição"
         lost_date: "Data"
         reward: "Recompensa"
+  string:
+    send_lost_message: "Mande uma mensagem para o dono deste objeto"
         

@@ -43,11 +43,11 @@
 		<div class="row">
 			<%= simple_form_for(:item, :url => :search_lost_items) do |f| %>
 				<div class="seven columns">
-					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
+					<%= f.input :search_lost, input_html: {value: '' }, required: false, label: false %>
 				</div>
 				
 				<div class="five columns center">
-					<%= f.submit "Buscar", :class => "round secondary small button" %><br/>
+					<%= f.submit "Buscar", :class => "round secondary small button", :id => "buscar_perdido" %><br/>
 				</div>
 			<% end %>
 		</div>
@@ -101,11 +101,11 @@
 		<div class="row">
 			<%= simple_form_for(:item, :url => :search_found_items) do |f| %>
 				<div class="seven columns">
-					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
+					<%= f.input :search_found, input_html: {value: '' }, required: false, label: false %>
 				</div>
 				
 				<div class="five columns center">
-					<%= f.submit "Buscar", :class => "round secondary small button" %><br/>
+					<%= f.submit "Buscar",  :class => "round secondary small button", :id => "buscar_encontrado" %><br/>
 				</div>
 			<% end %>
 		</div>
