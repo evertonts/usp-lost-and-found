@@ -2,8 +2,23 @@
   <%= f.error_notification %>
 
 	<div class="row">
+		
   	<div class="four columns">
 			<%= f.input :description, :required => true, :label => "Descricao", as: :text, :input_html => {:columns => 10, :rows => 5}%>
+		</div>
+		
+		<div class="six columns end">
+			<div class="one column">
+			</div>
+			<%= f.fields_for :assets do |asset_fields|%>
+				<% unless asset_fields.object.new_record? %>
+					<div class="two columns">	
+						<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)  %>
+					remover <%= asset_fields.check_box :_destroy%>
+					</div>
+				<% end %>
+
+			<%end%>
 		</div>
 	</div>
 
@@ -29,28 +44,12 @@
 
 			<label for="aseets">Imagem</label>
 			<%= f.fields_for :assets do |asset_fields|%>
-				
-				
 				<%= asset_fields.file_field :asset if asset_fields.object.new_record?%>
 			<%end%>
 
-		
-		
 		<% unless @item.new_record? %>
 			<%= f.input :returned, :inline_label => "Recuperado", :label => false %>
 		<% end %>
-		
-		<%= f.fields_for :assets do |asset_fields|%>
-			<% unless asset_fields.object.new_record? %>
-				<p>
-				<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)  %>
-				
-				remover
-				<%= asset_fields.check_box :_destroy%>
-				</p>
-			<% end %>
-			
-		<%end%>
 		
   <div class="row">
     <%= f.button :submit %>

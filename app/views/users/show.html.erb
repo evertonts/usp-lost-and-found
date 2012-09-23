@@ -17,8 +17,13 @@
 			<p><%= link_to item.description, item_path(item), :class => "link" %></p>
 		</div>
 		
-		<div class="four columns">
-			<%= link_to item.lost? ? "Recuperado" : "Devolvido", recover_items_path, :class => "nice small button", :style => "margin: 10px 0px 10px 0px"%>
+		<div class="one column end">
+			<%= link_to "Editar", edit_item_path(item), :class=>"nice small button", :style => "margin: 10px 0px 10px 0px"%>
+		</div>
+		<div class="two columns end">
+			<% unless item.returned%>
+				<%= link_to item.lost? ? "Recuperado" : "Devolvido", recover_items_path(:id => item.id), :class => "nice small button", :style => "margin: 10px 0px 10px 0px"%>
+			<%end%>
 		</div>
 	</div>
 <% end %>

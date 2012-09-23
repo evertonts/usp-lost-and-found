@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
   validates :user_id, :presence => true
   validates :description, :presence => true
+  validates :reward, :numericality => {:greater_than => 0}, :allow_nil => true
   validates_date :lost_date
   
   accepts_nested_attributes_for :assets, :allow_destroy => :true

@@ -86,7 +86,10 @@ class ItemsController < ApplicationController
   end
   
   def recover 
-     redirect_to :back
+    item = Item.find(params[:id])
+    item.returned = true
+    item.save!
+    redirect_to :back
   end
   
 end
