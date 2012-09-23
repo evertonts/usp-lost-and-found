@@ -6,7 +6,10 @@
 	
 	<div class="eight columns">
 		<p>Descrição: <%= @item.description%><br/>
-		Recompensa: <%= @item.reward || "Este item não possui recompensa"%></p>
+		Recompensa: <%= @item.reward || "Este item não possui recompensa" if @item.lost?%><br/>
+		Data em que o item foi <%= @item.lost? ? "perdido: " : "encontrado: "%>
+		<%=l @item.lost_date %>
+		</p>
 	</div>
 	<%= @item.returned? ? "Item recuperado" : "" %>
 </div>

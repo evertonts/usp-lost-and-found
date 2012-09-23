@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create, :update, :destroy]
-  
+  before_filter :authenticate_user!, :only => [:create]
+    
   def create
     @message = Message.new(params[:message])
     @message.sender = current_user

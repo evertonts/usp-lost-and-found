@@ -52,7 +52,7 @@ def sign_in
 end
 
 def create_other_users_item
-  @item = FactoryGirl.create(:item, :user_id => @other.id)
+  @item = FactoryGirl.create(:item, :user_id => @other.id, :lost_date => "21/02/2011", :description => "teste")
 end
 
 def send_message message

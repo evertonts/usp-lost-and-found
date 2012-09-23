@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ApplicationController < ActionController::Base
   
   protect_from_forgery
@@ -6,10 +8,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
-      redirect_to root_url
+      redirect_to :back, :alert => exception.message
     else
       # Adds the protected page to the login url but only if the user is not logged in
-      redirect_to login_path(:next => request.path)
+      redirect_to user_session_path(:next => request.path)
     end
     
   end

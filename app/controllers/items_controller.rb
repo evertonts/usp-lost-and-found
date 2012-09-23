@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:create, :update, :destroy]
   before_filter :store_location
   
+  load_and_authorize_resource
+  
   
   def new_item
     @item = Item.new

@@ -24,3 +24,4 @@ gem "simple_form"
 gem "paperclip", "~> 3.0"
 gem 'rails-translate-routes'
 gem "passenger", "~> 3.0.17" 
+gem 'validates_timeliness', '~> 3.0'

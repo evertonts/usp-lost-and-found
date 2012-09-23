@@ -6,9 +6,17 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, Item, User 
-      can :create, Item
+      can :read, Item
+      can [:create, :new_lost, :new_found], Item
+      can [:search_lost, :search_found], Item
       
+      can [:update, :destroy], Item do |item|
+        item.user == user
+      end 
+      
+      can :show, User do |user1|
+        user1 == user
+      end
     end
     
     # Define abilities for the passed in user here. For example:

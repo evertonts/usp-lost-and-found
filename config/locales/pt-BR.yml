@@ -223,4 +223,9 @@ pt-BR:
         reward: "Recompensa"
   string:
     send_lost_message: "Mande uma mensagem para o dono deste objeto"
+    
+  unauthorized:
+    manage:
+      all: "Você não está autorizado a acessar esse recurso"
+
         

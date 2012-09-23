@@ -9,7 +9,10 @@
 
 	<div class="row">
 		<div class="three columns">
-			<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? 			"perdido" : "encontrado") %>
+			<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado") %>
+		</div>
+		<div class="two columns end" style="margin-top: 20px">
+			<p> ex: 21/12/2012 </p>
 		</div>
 	</div>
 	
@@ -26,17 +29,27 @@
 
 			<label for="aseets">Imagem</label>
 			<%= f.fields_for :assets do |asset_fields|%>
-				<%= asset_fields.file_field :asset %>
+				
+				
+				<%= asset_fields.file_field :asset if asset_fields.object.new_record?%>
 			<%end%>
 
 		
 		
 		<% unless @item.new_record? %>
-			<%= f.input :returned, :label => "Recuperado" %>
+			<%= f.input :returned, :inline_label => "Recuperado", :label => false %>
 		<% end %>
 		
 		<%= f.fields_for :assets do |asset_fields|%>
-				<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
+			<% unless asset_fields.object.new_record? %>
+				<p>
+				<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)  %>
+				
+				remover
+				<%= asset_fields.check_box :_destroy%>
+				</p>
+			<% end %>
+			
 		<%end%>
 		
   <div class="row">
