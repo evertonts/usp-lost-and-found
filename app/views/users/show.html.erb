@@ -1,7 +1,26 @@
-<h1>Users#show</h1>
-<p><%= @user.name %></p>
+<div class="row">
+	<div class="four columns">
+		<h2><%= @user.name %></h2>
+	</div>
+</div>
+
+<h3>Items</h3>
+
 <% for item in @items %>
-	<%= item.description%>
+	<div class="row list <%= item.lost? ? "lost" : "found" %>">
+		<div class="one column">
+			<%= image_tag item.main_image_thumb %>
+		</div>
+		
+		<div class="six columns">
+			
+			<p><%= link_to item.description, item_path(item), :class => "link" %></p>
+		</div>
+		
+		<div class="four columns">
+			<%= link_to item.lost? ? "Recuperado" : "Devolvido", recover_items_path, :class => "nice small button", :style => "margin: 10px 0px 10px 0px"%>
+		</div>
+	</div>
 <% end %>
 
 <%= render :partial => "messages/show_messages"%>

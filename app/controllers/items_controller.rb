@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
+    @item.assets.build
   end
 
   # POST /items
@@ -80,6 +81,10 @@ class ItemsController < ApplicationController
     query = "%#{search_hash[:search_found]}%"    
     @items = Item.where("lost = ? AND description LIKE ?", false, query)
 
+  end
+  
+  def recover 
+     redirect_to :back
   end
   
 end

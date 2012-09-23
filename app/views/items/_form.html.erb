@@ -32,7 +32,7 @@
 		
 		
 		<% unless @item.new_record? %>
-			<%= f.check_box :returned, :label => "Recuperado" %>
+			<%= f.input :returned, :label => "Recuperado" %>
 		<% end %>
 		
 		<%= f.fields_for :assets do |asset_fields|%>
