@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:create, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new_lost, :new_found, :create, :update, :destroy]
   before_filter :store_location
   
   load_and_authorize_resource

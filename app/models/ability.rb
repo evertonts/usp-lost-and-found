@@ -17,6 +17,12 @@ class Ability
       can :show, User do |user1|
         user1 == user
       end
+      
+      can :create, Message
+      
+      can :show, Message do |message|
+        message.sender == user || message.recipient == user
+      end
     end
     
     # Define abilities for the passed in user here. For example:

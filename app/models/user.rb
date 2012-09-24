@@ -7,11 +7,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "image_not_found_:style.jpg"
+  
   
   has_many :items
   has_many :sent_messages, :class_name => Message, :foreign_key => 'sender_id'
   has_many :received_messages, :class_name => Message, :foreign_key => 'recipient_id'
+  
+  has_many :replies, :class_name => Reply
   
   validates :name, :presence => true
   

@@ -58,6 +58,16 @@
 		</div>
 	</div>
 	
+	<div class="row">
+		<div class="two columns">
+			<%= f.label :avatar %>
+		</div>
+		
+		<div class="three columns end">
+			<%= f.file_field :avatar%>
+		</div>
+	</div>
+	
 	  <div><%= f.submit t(".submit") %></div>
 	
 <% end %>

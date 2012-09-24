@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120829142527) do
+ActiveRecord::Schema.define(:version => 20120923224025) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120829142527) do
   end
 
   create_table "items", :force => true do |t|
+    t.string   "title"
     t.string   "description"
     t.date     "lost_date"
     t.boolean  "lost"
@@ -38,8 +39,17 @@ ActiveRecord::Schema.define(:version => 20120829142527) do
     t.string   "text"
     t.integer  "sender_id"
     t.integer  "recipient_id"
+    t.string   "title"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "replies", :force => true do |t|
+    t.integer  "message_id"
+    t.text     "text"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -67,6 +77,10 @@ ActiveRecord::Schema.define(:version => 20120829142527) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

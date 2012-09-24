@@ -1,8 +1,9 @@
 class Item < ActiveRecord::Base
-  attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward
+  attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward, :title
   has_many :assets
   belongs_to :user
   validates :user_id, :presence => true
+  validates :title, presence: true
   validates :description, :presence => true
   validates :reward, :numericality => {:greater_than => 0}, :allow_nil => true
   validates_date :lost_date
@@ -26,7 +27,7 @@ class Item < ActiveRecord::Base
   end
   
   def show_date
-    lost_date.strftime("%d/%m/%Y")
+    lost_date.strftime("%d/%m/%Y") unless lost_date.nil?
   end
   
 end
