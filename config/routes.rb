@@ -9,6 +9,7 @@ UspLostAndFound::Application.routes.draw do
   resources :users, :only => [:show, :index]
   
   resources :messages
+  resources :replies  
   
   resources :items do
     collection do

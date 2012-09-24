@@ -211,6 +211,7 @@ pt-BR:
       message: "Mensagem"
     attributes:
       user:
+        avatar: "Foto"
         name: "Nome"
         email: "E-mail"
         password: "Senha"

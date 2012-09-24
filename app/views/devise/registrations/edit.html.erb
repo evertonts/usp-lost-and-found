@@ -59,6 +59,16 @@
 		<div class="seven colums">
 		</div>
 	</div>
+	
+	<div class="row">
+		<div class="two columns">
+			<%= f.label :avatar %>
+		</div>
+		
+		<div class="three columns end">
+			<%= f.file_field :avatar%>
+		</div>
+	</div>
 
   <div class="row">
 
@@ -80,4 +90,4 @@
 
 <p><%= t(".cancel.message") %> <%= link_to t(".cancel.action"), registration_path(resource_name), :data => { :confirm => t(".cancel.confirm") }, :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Voltar", :back %>

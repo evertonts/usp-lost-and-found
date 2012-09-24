@@ -2,6 +2,6 @@
 
 <ul>
 	<% for item in @items %>
-		<li><%= link_to item.description, item_path(item) %></li>
+		<li><%= link_to item.title, item_path(item) %></li>
 	<% end %>
 </ul>

@@ -1,8 +1,9 @@
+<h3><%= @item.title %></h3>
 <h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item devolvido" if @item.returned %>
 </h4>
 <div class="row">
 	<div class="four columns" style="text-align: center;">
-			<%= link_to image_tag(@item.main_image_thumb), @item.main_image%>
+			<%= link_to image_tag(@item.main_image_thumb), @item.main_image %>
 	</div>
 	
 	<div class="eight columns">
@@ -16,10 +17,11 @@
 	</div>
 </div>
 
+<%unless @item.user == current_user%>
 <div class="row">
 	<%= render "messages/send_message"%>
 </div>
-
+<%end%>
 
 <div class="row">
 	<%= link_to 'Editar', edit_item_path(@item) %> |
