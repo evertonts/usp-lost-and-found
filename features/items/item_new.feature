@@ -15,5 +15,5 @@ Feature: Create item
 		
 	Scenario: Visitors should not be able to create an item
 		Given I am not logged in
-		When I create a new lost item "lost item 1"
+		When I try to create a new lost item
 		Then I should see the sign in page

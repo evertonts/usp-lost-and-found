@@ -1,34 +1,21 @@
 <h3><%= @message.title%> </h3>
 
+<div class="row">
+	<div class="two columns">
+		De <%= @message.sender.name %>
+	</div>
+	<div class="two columns end">
+		Para <%= @message.recipient.name %>
+	</div>
+</div>
 <p>
 	<b>Mensagem:</b> <%= @message.text%>
 </p>
-<b>Respostas:</b><br/>
-<ul>
-	<% for reply in @message.replies %>
-		<div class="row">
-			<div class="one column">
-			</div>
-		
-			<div class="two columns end">
-				<%=reply.user.name%>
-			</div>
-			
-			<div class="three columns end">
-				<%= reply.text %>  
-			</div>
 
-		</div>
-	<% end %>
-</ul>
-<%= simple_form_for(@reply) do |f| %>
-	<%= f.error_notification %>
-  
-	<div class="row">
-		<div class="four columns">
-	<%= f.input :text, :as => :text, :input_html => {:rows => 3}, :label => "	Responda essa mensagem", required: true%>
-		</div>
-		<%= f.input :message_id, :as => :hidden, :input_html => {:value => @message.id} %>
-	</div>
-	<%= f.submit %>
-<% end %>
+<%= render "replies/view_replies"%>
+
+<div id="resposta">
+<%= link_to "Responder", new_reply_url(:message_id => @message.id), :remote => true, :id => "responder" %>
+</div>
+
+<div id="form-content"></div>

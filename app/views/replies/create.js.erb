@@ -1,0 +1,2 @@
+$('.reply-form').remove();
+$('#reply-list').append("	<div class='row'><div class='one column'></div><div class='two columns end'><i><%= escape_javascript(@reply.user.name)%> escreveu:</i></div></div><div class='row'><div class='one column'></div><div class='three columns end'><%= escape_javascript(@reply.text) %>  </div></div>");

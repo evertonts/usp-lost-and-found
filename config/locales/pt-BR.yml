@@ -209,6 +209,7 @@ pt-BR:
       user: "Usuário"
       item: "Item"
       message: "Mensagem"
+      reply: "Resposta"
     attributes:
       user:
         avatar: "Foto"

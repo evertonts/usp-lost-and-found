@@ -12,8 +12,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items
     @messages = current_user.all_messages
-    @sent_messages = current_user.sent_messages
-    @received_messages = current_user.received_messages
   end
 
 end

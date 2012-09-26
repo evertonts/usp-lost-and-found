@@ -1,0 +1,14 @@
+<!doctype html>
+
+<%= simple_form_for(@reply, :remote => true, :html => {:class => "reply-form" }, :validate => true) do |f| %>
+	<%= f.error_notification %>
+  	
+	<div class="row">
+		<div class="four columns">
+	<%= f.input :text, :as => :text, :input_html => {:rows => 3}, :label => false, required: true%>
+		</div>
+		<%= f.input :message_id, :as => :hidden, :input_html => { :value => @message.id}%>
+	</div>
+	<%= f.submit %>
+	<%= link_to "Cancelar", '#', :id => "cancelar"%>
+<% end %>

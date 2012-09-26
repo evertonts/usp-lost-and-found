@@ -2,7 +2,7 @@
 
 def create_lost_item(description)
   visit '/items/new_lost'
-  fill_in "Título", :with => description
+  fill_in "item_title", :with => description
   fill_in "Descricao", :with => description
   fill_in "Recompensa", :with => 10.0
   fill_in "Data que o item foi perdido", :with => "21/09/2012"
@@ -49,6 +49,11 @@ end
 When /^I search for "(.*?)"$/ do |item|
   search(item)
 end
+
+When /^I try to create a new lost item$/ do
+  visit '/items/new_lost'
+end
+
 
 Then /^I should see an item created message$/ do
   page.should have_content "Item cadastrado com sucesso"

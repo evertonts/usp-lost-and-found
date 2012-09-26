@@ -6,7 +6,7 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, Item
+      can :show, Item
       can [:create, :new_lost, :new_found], Item
       can [:search_lost, :search_found], Item
       
