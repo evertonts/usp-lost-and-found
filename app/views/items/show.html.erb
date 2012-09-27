@@ -1,3 +1,14 @@
+<div class="row">
+	<div class="two columns">
+		<%= image_tag @item.user.avatar.url(:thumb)%> 
+	</div>
+	<div class="two columns end">
+		<h5 style="margin-top:30px"><%= @item.user.name %></h5>
+	</div>
+	<div class="two columns end">
+		<h5 style="margin-top:30px"><%= @item.lost? ? "Perdeu" : "Encontrou"%></h5>
+	</div>
+</div>
 <h3><%= @item.title %></h3>
 <h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item devolvido" if @item.returned %>
 </h4>
@@ -24,6 +35,8 @@
 <%end%>
 
 <div class="row">
-	<%= link_to 'Editar', edit_item_path(@item) %> |
-	<%= link_to 'Voltar', items_path %>
+	<%if can? :update, @item%>
+		<%= link_to 'Editar', edit_item_path(@item) %>
+	<% end%>
+	
 </div>

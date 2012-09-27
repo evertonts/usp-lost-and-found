@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
 
   def main_image
     if assets.empty?
-     "image_not_found.jpg"
+     "javascript:void(0)"
     else
       assets.first.asset.url(:original)
     end

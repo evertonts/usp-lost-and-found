@@ -4,7 +4,6 @@
 
 Window.registerClick = (messagesIds) ->
 	for id in messagesIds
-		console.log($("a#responder-" + id))
 		$("a#responder-" + id).click(() ->
 			_id = (this.id.split('-')[1])
 			url = $(this).attr('href')
@@ -20,12 +19,9 @@ Window.registerClick = (messagesIds) ->
 
 
 Window.appendContent = (content, id) ->
-	console.log($('#form-content-' + id))
 	$('#form-content-' + id).append(content)
-	console.log($('#reply_text'))
 	$('#reply_text').focus()
 
 Window.removeForm = () ->
-	console.log($('.reply-form'))
 	if $('.reply-form').length
 		$('.reply-form').remove();

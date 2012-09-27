@@ -9,5 +9,5 @@
 		<%= f.input :message_id, :as => :hidden, :input_html => { :value => @message.id}%>
 	</div>
 	<%= f.submit %>
-	<%= link_to "Cancelar", 'javacript:void', :id => "cancelar"%>
+	<%= link_to "Cancelar", 'javacript:void(0)', :id => "cancelar"%>
 <% end %>

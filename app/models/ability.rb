@@ -10,7 +10,7 @@ class Ability
       can [:create, :new_lost, :new_found], Item
       can [:search_lost, :search_found], Item
       
-      can [:update, :destroy], Item do |item|
+      can [:update, :destroy, :recover], Item do |item|
         item.user == user
       end 
       
