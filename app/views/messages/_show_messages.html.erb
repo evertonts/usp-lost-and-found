@@ -1,5 +1,8 @@
 <h3>Mensagens</h3>
 	
+	<script>
+		contents = [];
+	</script>
 <% for @message in @messages %>
 	<div style="background-color">
 		
@@ -15,7 +18,7 @@
 	
 	<div class="row"> 
 		<div class="five columns">
-			<h5><%= link_to @message.title, message_path(@message) %></h5>
+			<h5><%= @message.title %></h5>
 		</div>
 	</div>
 		
@@ -24,7 +27,22 @@
 			<p><%=@message.text%></p>
 		</div>
 	</div>
-
+	
+	<script>
+	$(document).ready(function() {
+	 	contents.push(<%=@message.id%>);
+	});
+	</script>
+	<div id="resposta-<%= @message.id %>">
+	<%= link_to "Responder", new_reply_url(:message_id => @message.id), :id => "responder-#{@message.id}" %>
+	</div>
 	<%= render "replies/view_replies" %>
 
+	<div id="form-content-<%= @message.id %>"></div>
 <% end%>
+
+<script>
+	$(document).ready(function() {
+	 	Window.registerClick(contents);
+	});
+</script>

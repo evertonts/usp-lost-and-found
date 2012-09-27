@@ -1,6 +1,6 @@
 <div style="background-color: #EEF">
 
-<ul id="reply-list">
+<ul id="reply-list-<%=@message.id%>">
 	<% for reply in @message.replies %>
 		<div class="row">
 			<div class="one column">

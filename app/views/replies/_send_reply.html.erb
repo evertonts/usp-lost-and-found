@@ -1,6 +1,5 @@
-<!doctype html>
 
-<%= simple_form_for(@reply, :remote => true, :html => {:class => "reply-form" }, :validate => true) do |f| %>
+<%= simple_form_for(@reply, :remote => true, :html => {:class => "reply-form" }) do |f| %>
 	<%= f.error_notification %>
   	
 	<div class="row">
@@ -10,5 +9,5 @@
 		<%= f.input :message_id, :as => :hidden, :input_html => { :value => @message.id}%>
 	</div>
 	<%= f.submit %>
-	<%= link_to "Cancelar", '#', :id => "cancelar"%>
+	<%= link_to "Cancelar", 'javacript:void', :id => "cancelar"%>
 <% end %>

@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items
     @messages = current_user.all_messages
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
 end
