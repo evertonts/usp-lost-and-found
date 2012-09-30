@@ -27,3 +27,5 @@ gem "passenger", "~> 3.0.17"
 gem 'validates_timeliness', '~> 3.0'
 gem 'mysql2'
 gem 'client_side_validations'
+gem 'acts-as-taggable-on'
+

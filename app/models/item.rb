@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward, :title
+  attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward, :title, :tag_list
   has_many :assets
   belongs_to :user
   validates :user_id, :presence => true
@@ -9,6 +9,8 @@ class Item < ActiveRecord::Base
   validates_date :lost_date
   
   accepts_nested_attributes_for :assets, :allow_destroy => :true
+  
+  acts_as_taggable
     
   def main_image_thumb
     if assets.empty?

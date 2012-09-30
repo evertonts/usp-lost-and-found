@@ -15,15 +15,16 @@ UspLostAndFound::Application.routes.draw do
     collection do
       get 'new_lost'
       get 'new_found'
-      post 'search_lost'
-      post 'search_found'
+      get 'search'
       get 'recover'
     end
   end
-    
+   
+  get 'tags/:tag', :to => 'items#search', :as => :tag 
 end
 
 ActionDispatch::Routing::Translator.translate_from_file(
   'config/locales/routes.yml', {
     prefix_on_default_locale: false,
     keep_untranslated_routes: true })
+ 
