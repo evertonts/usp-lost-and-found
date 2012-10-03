@@ -30,3 +30,16 @@
 		}
 	}
 }
+
+#tag_cloud {
+	line-height: 1.6em;
+	.small { 
+		font-size: 0.8em; 
+	}
+	.medium { 
+		font-size: 1.4em; 
+	}
+	.large { 
+		font-size: 2.0em; 
+	}
+}
