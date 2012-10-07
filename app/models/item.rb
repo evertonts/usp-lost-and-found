@@ -32,6 +32,13 @@ class Item < ActiveRecord::Base
     lost_date.strftime("%d/%m/%Y") unless lost_date.nil?
   end
   
+  def self.tagged_with_like(query)
+    items = []
+    ActsAsTaggableOn::Tag.where("name LIKE ?", "%#{query}%").each do |tag|
+      items.concat Item.tagged_with(tag)
+    end
+    items
+  end
 end
 
 

@@ -7,6 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 	gem 'compass-rails', '~> 1.0.3'
 	gem 'zurb-foundation', '~> 3.0.9'
+	gem 'rails3-jquery-autocomplete'
 end
 gem 'therubyracer', '~> 0.9.9'
 gem 'jquery-rails'
@@ -28,4 +29,5 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'mysql2'
 gem 'client_side_validations'
 gem 'acts-as-taggable-on'
+
 

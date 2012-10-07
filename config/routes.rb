@@ -17,6 +17,7 @@ UspLostAndFound::Application.routes.draw do
       get 'new_found'
       get 'search'
       get 'recover'
+      get 'autocomplete_tag_name'
     end
   end
    

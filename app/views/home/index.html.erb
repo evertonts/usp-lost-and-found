@@ -33,7 +33,7 @@
 		<div class="row">
 			<%= simple_form_for(:item, :url => :search_items, :method => :get)  do |f| %>
 				<div class="seven columns">
-					<%= f.input :search_lost, input_html: {value: '' }, required: false, label: false %>
+					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
 				</div>
 				<%= f.input :lost, :as => :hidden, :input_html => {:value => true}%>
 				
@@ -102,7 +102,7 @@
 		<div class="row">
 			<%= simple_form_for(:item, :url => :search_items, :method => :get) do |f| %>
 				<div class="seven columns">
-					<%= f.input :search_found, input_html: {value: '' }, required: false, label: false %>
+					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
 				</div>
 					<%= f.input :lost, :as => :hidden, :input_html => {:value => false} %>
 				<div class="five columns center">

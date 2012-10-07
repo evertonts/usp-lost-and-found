@@ -4,12 +4,7 @@ class HomeController < ApplicationController
     @item = Item.new
     @items_lost = Item.where(:lost => true).order("created_at desc").limit(10).reverse
     @items_found = Item.where(:lost => false).order("created_at desc").limit(10).reverse
-    @tags = Item.tag_counts_on(:tags)
-    
-    ActsAsTaggableOn::Tag.all.each do |tag|
-      unless @tags.include? tag
-        @tags << tag
-      end
-    end
+    @tags = Item.tag_counts_on(:tags) | ActsAsTaggableOn::Tag.all
+
   end
 end

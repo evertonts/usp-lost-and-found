@@ -146,6 +146,8 @@ GEM
       railties (= 3.2.2)
     rails-translate-routes (0.1.3)
       activesupport (>= 3.1)
+    rails3-jquery-autocomplete (1.0.9)
+      rails (~> 3.0)
     railties (3.2.2)
       actionpack (= 3.2.2)
       activesupport (= 3.2.2)
@@ -238,6 +240,7 @@ DEPENDENCIES
   passenger (~> 3.0.17)
   rails (= 3.2.2)
   rails-translate-routes
+  rails3-jquery-autocomplete
   rolify (>= 3.1.0)
   rspec-rails (>= 2.10.1)
   sass-rails (~> 3.2.3)
