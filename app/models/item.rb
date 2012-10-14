@@ -5,7 +5,6 @@ class Item < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :title, presence: true
   validates :description, :presence => true
-  validates :reward, :numericality => {:greater_than => 0}, :allow_nil => true
   validates_date :lost_date
   
   accepts_nested_attributes_for :assets, :allow_destroy => :true

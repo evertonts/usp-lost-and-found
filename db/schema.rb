@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120930184247) do
+ActiveRecord::Schema.define(:version => 20121010231844) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20120930184247) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "contact_messages", :force => true do |t|
+    t.string   "name"
+    t.string   "body"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "items", :force => true do |t|
     t.string   "title"
     t.string   "description"
@@ -30,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20120930184247) do
     t.boolean  "lost"
     t.boolean  "returned"
     t.integer  "user_id"
-    t.decimal  "reward"
+    t.string   "reward"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

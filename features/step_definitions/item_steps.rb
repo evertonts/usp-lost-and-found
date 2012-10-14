@@ -26,7 +26,7 @@ end
 
 def search(description)
   visit "/"
-  fill_in "item_search_lost", :with => description
+  fill_in "item_search", :with => description
   click_button "buscar_perdido"
 end
 
