@@ -1,61 +1,53 @@
 <div class="row">
-	<div class="six columns"  style="padding:0px 2.5px 0px 0px">
+	<div class="six columns">
 		<div class="row">
 		
-		<div class="four column offset-by-one lost title">
-			EU PERDI
-		</div>
+			<div class="four column lost title">
+				EU PERDI
 			</div>
-			
+		</div>
+		<hr class="separador lost"></hr>
 		
 		<div class="twelve columns lost box">
+			<div class="row">
+				<%= simple_form_for(:item, :url => :search_items, :method => :get)  do |f| %>
+					<div class="nine columns">
+						<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
+					</div>
+					<%= f.input :lost, :as => :hidden, :input_html => {:value => true}%>
+
+					<div class="three columns right">
+						<%= f.submit "Buscar", :class => "secondary small button", :id => "buscar_perdido"  %><br/>
+					</div>
+				<% end %>
+			</div>
+			
 		<div class="row">
+			
 			<div class="nine columns">
-				Não encontrou seu objeto?<br/>
+				Não encontrou seu objeto?
 				Cadastre a ocorrência aqui.
 			</div>
 			
-			<div class="three columns">
-				<a class="secondary round button" href="<%=new_lost_items_path%>">Cadastrar</a>
+			<div class="three columns right">
+				<a class="secondary small button" href="<%=new_lost_items_path%>">Cadastrar</a>
 				
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="two columns title bigger">
-				OU
-			</div>
-			<div class="ten columns">
-				<hr/>
-			</div>
-		</div>
-		
-		<div class="row">
-			<%= simple_form_for(:item, :url => :search_items, :method => :get)  do |f| %>
-				<div class="seven columns">
-					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
-				</div>
-				<%= f.input :lost, :as => :hidden, :input_html => {:value => true}%>
-				
-				<div class="five columns center">
-					<%= f.submit "Buscar", :class => "round secondary small button", :id => "buscar_perdido" %><br/>
-				</div>
-			<% end %>
 		</div>
 		
 		<div class="row" style="margin-top: 20px">
-			<div class="eight columns title">
+			<div class="eight columns title lost">
 				OBJETO
 			</div>
 			
-			<div class="four columns title">		
+			<div class="four columns title lost">		
 				DATA
 			</div>
 		</div>
+		<hr class="separador lost"></hr>
 		
 		<div class="row">
 			<% for item in @items_lost %>
-				<hr/>
 				<p class="eight columns">
 					<%= link_to item.description, item_path(item)%>
 				</p>
@@ -68,62 +60,56 @@
 		</div>
 	</div>
 
-	<div class="six columns" style="padding:0px 0px 0px 2.5px">
+	<div class="six columns" style="padding:0px 0px 0px 10px">
 		
 		<div class="row">
 		
-		<div class="four column offset-by-one found title">
-			EU ACHEI
-		</div>
+			<div class="four column found title">
+				EU ACHEI
 			</div>
+		</div>
+		
+		<hr class="separador found"></hr>
 		
 		<div class="twelve columns found box">
-
-		<div class="row">
-			<div class="nine columns">
-				Encontrou um objeto e quer devolve-lo?<br/>
-				Cadastre-o aqui e encontre o dono.
-			</div>
-			
-			<div class="three columns">
-				<a class="secondary round button" href="<%=new_found_items_path%>">Cadastrar</a>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="two columns title bigger">
-				OU
-			</div>
-			<div class="ten columns">
-				<hr/>
-			</div>
-		</div>
 		
 		<div class="row">
 			<%= simple_form_for(:item, :url => :search_items, :method => :get) do |f| %>
-				<div class="seven columns">
-					<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
+				<div class="nine columns">
+						<%= f.input :search, input_html: {value: '' }, required: false, label: false %>
 				</div>
-					<%= f.input :lost, :as => :hidden, :input_html => {:value => false} %>
-				<div class="five columns center">
-					<%= f.submit "Buscar",  :class => "round secondary small button", :id => "buscar_encontrado" %><br/>
+						<%= f.input :lost, :as => :hidden, :input_html => {:value => false} %>
+				<div class="three columns right">
+						<%= f.submit "Buscar",  :class => "secondary small button", :id => "buscar_encontrado" %><br/>
 				</div>
-			<% end %>
+				<% end %>
+		</div>
+			
+		<div class="row">
+			<div class="nine columns">
+				Encontrou um objeto e quer devolve-lo?
+				Cadastre-o aqui e encontre o dono.
+			</div>
+			
+			<div class="three columns right">
+				<a class="secondary small button" href="<%=new_found_items_path%>">Cadastrar</a>
+			</div>
 		</div>
 		
 		<div class="row" style="margin-top: 20px">
-			<div class="eight columns title">
+			<div class="eight columns title found">
 				OBJETO
 			</div>
 			
-			<div class="four columns title">		
+			<div class="four columns title found">		
 				DATA
 			</div>
 		</div>
 		
+		<hr class="separador found"></hr>
+		
 		<div class="row">
 			<% for item in @items_found %>
-				<hr/>
 				<p class="eight columns">
 					<%= link_to item.description, item_path(item)%>
 				</p>

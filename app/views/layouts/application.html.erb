@@ -13,29 +13,28 @@
   </head>
   <body>
     <div id="container" class="container">
-      <header style="margin-bottom:30px">
+      <header style="margin-bottom:10px">
 				<div class="row">
 					<div class="twelve columns" style="text-align: right">
         		<%= render 'layouts/navigation' %>
 					</div>
 				</div>
 				
-				<div class="row">
+				<div class="row" style="margin-bottom:30px">
 					<div class="three columns" style="font-size:2.5em;text-align:center">
 						<a href="/" class="logo">ACH<span style="font-weight:bold">USP</span></a>
 					</div>
 					<div class="nine columns">
 					</div>
 				</div>
-				
+
+      </header>
+      <div id="main" role="main" class="row">
 				<div class="row">
 					<div class="twelve columns">
         		<%= render 'layouts/messages' %>
 					</div>
 				</div>
-
-      </header>
-      <div id="main" role="main" class="row">
         <%= yield %>
       </div>
       <footer style="margin-top:10px; text-align:center;background-color:#666; height:40px; color:#EEE; padding: 10px; weight:100%">

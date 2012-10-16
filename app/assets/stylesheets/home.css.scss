@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div {
+	padding:0px 10px 0px 0px
+}
+
 a {
 	&.logo {
 		color: #000;
@@ -9,7 +13,8 @@ a {
 }
 
 .box {
-	padding: 20px 40px 20px 40px;
+	
+	padding: 0px;
 	
 	p {
 		margin: 5px 0px 5px 0px;
@@ -19,19 +24,26 @@ a {
 		margin: 10px 0px 0px 0px;
 	}
 	
-	input {
-		margin: 10px 10px 10px 0px;
+	.button {
+		width: 80px;
 	}
 }
+
 
 .center {
 	text-align:center;
 }
 
+.right {
+	text-align:right;
+	margin-right: 0px;
+	padding-right: 0px;
+}
+
 .title {
-	font-size: 1.2em;
+	font-size: 1.6em;
 	font-weight: bold;
-	color: #FFFFFF;
+
 	
 	&.bigger {
 		font-size: 1.4em;
@@ -47,26 +59,12 @@ a {
 	
 	&.box{
 		min-height:400px; 
-		
-		color:#FFFFFF;
-		
-		background-image: linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
-		background-image: -o-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
-		background-image: -moz-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
-		background-image: -webkit-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
-		background-image: -ms-linear-gradient(bottom, rgb(255,70,101) 31%, rgb(255,84,68) 66%, rgb(255,51,0) 83%);
-
-		background-image: -webkit-gradient(
-			linear,
-			left bottom,
-			left top,
-			color-stop(0.31, rgb(255,70,101)),
-			color-stop(0.66, rgb(255,84,68)),
-			color-stop(0.83, rgb(255,51,0))
-		);
 	}
-	a {
-		color: #FFF;
+	
+	&.separador {
+		margin: 3px 0px 5px 0px; 
+		border-width: 2px 0px 0px;
+		border-color: #FF3300; 		
 	}
 }
 
@@ -77,26 +75,12 @@ a {
 	
 	&.box{
 		min-height:400px; 
-		
-		color:#FFFFFF;
-		
-		background-image: linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
-		background-image: -o-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
-		background-image: -moz-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
-		background-image: -webkit-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
-		background-image: -ms-linear-gradient(bottom, rgb(102,204,255) 31%, rgb(85,187,255) 61%, rgb(51,153,255) 83%);
-
-		background-image: -webkit-gradient(
-			linear,
-			left bottom,
-			left top,
-			color-stop(0.31, rgb(102,204,255)),
-			color-stop(0.61, rgb(85,187,255)),
-			color-stop(0.83, rgb(51,153,255))
-		);
 	}
 	
-	a {
-		color: #FFF;
+	&.separador {
+		margin: 3px 0px 5px 0px; 
+		border-width: 2px 0px 0px;
+		border-color: #3399FF; 		
 	}
 }
+
