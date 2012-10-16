@@ -141,7 +141,7 @@
 	<div class="two columns">
 	</div>
 	
-	<div class="eight columns">
+	<div class="eight columns" style="min-height: 45px">
   	<% tag_cloud @tags, %w[small medium large] do |tag, css_class| %>
     	<%= link_to tag.name, tag_path(tag.name), class: css_class %>
   	<% end %>
