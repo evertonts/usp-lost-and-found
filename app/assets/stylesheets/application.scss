@@ -39,7 +39,20 @@ ul.nav li {
   background-color: #FCC;
   border: solid 1px #C66;
 }
-
+.row {
+	margin: 0 auto;
+	width: 90.00%;
+}
 #main {
-	min-height: 513px;
+	padding-bottom: 60px;
+}
+
+html, body {
+	height: 100%;
+}
+
+.container {
+	height: auto;
+	min-height: 100%;
+	position: relative;
 }
