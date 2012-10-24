@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_filter :store_location
+  
   def index
     @users = User.all
     @item = Item.new

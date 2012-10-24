@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new_lost, :new_found, :create, :update, :destroy]
   before_filter :store_location
+  
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   load_and_authorize_resource

@@ -223,6 +223,7 @@ pt-BR:
         description: "Descrição"
         lost_date: "Data"
         reward: "Recompensa"
+        title: Título
   string:
     send_lost_message: "Mande uma mensagem para o dono deste objeto"
     

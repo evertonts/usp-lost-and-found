@@ -1,6 +1,11 @@
-<h1>Editar item</h1>
+<div class="row ">
+	<span class="<%= @item.lost? ? 'lost'  : 'found'  %> title">EDITAR ITEM</span>
+	<hr class="separador <%= @item.lost? ? 'lost'  : 'found'  %>"/>
+</div>
 
+<div style="margin-top: 10px">
 <%= render 'form' %>
+</div>
 
 <div class="row">
 <%= link_to 'Ver', @item %> |

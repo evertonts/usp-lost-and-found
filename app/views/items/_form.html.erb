@@ -2,67 +2,69 @@
   <%= f.error_notification %>
 
 	<div class="row">
-		<div class="four columns">
-			<h4><%= f.input :title, required: true, label: "Título" %><h4>
-		</div>
-	</div>
-	<div class="row">
-		
-  	<div class="four columns">
-			<%= f.input :description, :required => true, :label => "Descricao", as: :text, :input_html => {:columns => 10, :rows => 5}%>
+		<div class="five columns">
+			<%= f.input :title, required: true %>
 		</div>
 		
-		<div class="six columns end">
-			<div class="one column">
+		<div class="six columns end offset-by-one">
+			<div class="three columns">
+				<label for="aseets">Imagem</label>
+					<%= f.fields_for :assets do |asset_fields|%>
+						<% if asset_fields.object.new_record? %>
+							<div class="small file button secondary file" id="files">
+								Arquivo
+							</div><div id="filename" style="max-width: 120px; overflow:hidden"></div>
+								<%= asset_fields.file_field(:asset, :style => "display: none;", :id => "file")%>
+
+						<%end%>
+					<%end%>
 			</div>
-			<%= f.fields_for :assets do |asset_fields|%>
-				<% unless asset_fields.object.new_record? %>
-					<div class="two columns">	
-						<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)  %>
-					remover <%= asset_fields.check_box :_destroy%>
-					</div>
-				<% end %>
 
-			<%end%>
+			<div class="mini-images six columns end">
+				<%= f.fields_for :assets do |asset_fields|%>
+					<% unless asset_fields.object.new_record? %>
+						<div class="three columns">
+							<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)%><br/>
+							remover <%= asset_fields.check_box :_destroy%>
+						</div>
+						<% end %>
+
+				<%end%>
+			</div>
+			
 		</div>
 	</div>
 	
 	<div class="row">
-		<div class="three columns">
-			<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete %>
+  	<div class="five columns">
+			<%= f.input :description, :required => true, as: :text, :input_html => {:columns => 10, :rows => 10}%>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="three columns">
-			<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado"), :input_html => {:value => @item.show_date} %>
-		</div>
-		<div class="two columns end" style="margin-top: 20px">
-			<p> ex: 21/12/2012 </p>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="four columns">
-			<% if @item.lost? %>
-				<%= f.input :reward, :label => "Recompensa" %>
-			<% end %>
-		</div>
+	<div class="five columns offset-by-one">
+		<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado"), :input_html => {:value => @item.show_date } %>
 	</div>
 		
-		<%=f.input :lost, :as => :hidden %>
-		
+	<div class="five columns offset-by-one">
+		<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete %>
+	</div>
 
-			<label for="aseets">Imagem</label>
-			<%= f.fields_for :assets do |asset_fields|%>
-				<%= asset_fields.file_field :asset if asset_fields.object.new_record?%>
-			<%end%>
-
-		<% unless @item.new_record? %>
-			<%= f.input :returned, :inline_label => "Recuperado", :label => false %>
+	<div class="five columns offset-by-one">
+		<% if @item.lost? %>
+			<%= f.input :reward, :label => "Recompensa" %>
 		<% end %>
+	</div>		
+	
+	<div class="five columns offset-by-one">
+		
+	</div>
+	
+	<%=f.input :lost, :as => :hidden %>
+	
+	</div>
+	
 		
   <div class="row">
-    <%= f.button :submit %>
+    <%= f.button :submit, :class => "button secondary" %>
   </div>
+
 <% end %>
