@@ -48,8 +48,8 @@
 		
 		<div class="row">
 			<% for item in @items_lost %>
-				<p class="eight columns">
-					<%= link_to item.description, item_path(item)%>
+				<p class="eight columns one-line">
+					<%= link_to item.title + " - " + item.description, item_path(item)%>
 				</p>
 				
 				<p class="four columns">
@@ -110,8 +110,8 @@
 		
 		<div class="row">
 			<% for item in @items_found %>
-				<p class="eight columns">
-					<%= link_to item.description, item_path(item)%>
+				<p class="eight columns one-line">
+					<%= link_to item.title + " - " + item.description, item_path(item)%>
 				</p>
 				
 				<p class="four columns">

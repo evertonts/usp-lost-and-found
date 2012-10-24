@@ -1,26 +1,25 @@
 <div style="background-color: #EEF">
 
-<ul id="reply-list-<%=@message.id%>">
-	<% for reply in @message.replies %>
-		<div class="row">
-			<div class="one column">
-			</div>
+	<ul id="reply-list-<%=@message.id%>">
+		<% for reply in @message.replies %>
+			<div class="row">
+				<div class="one column">
+				</div>
 
-			<div class="two columns end">
-				<i><%=reply.user.name%> escreveu:</i>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="one column">
+				<div class="two columns end">
+					<i><%=reply.user.name%> escreveu:</i>
+				</div>
 			</div>
 		
-			<div class="three columns end">
-				<%= reply.text %>  
+			<div class="row">
+				<div class="one column">
+				</div>
+		
+				<div class="three columns end">
+					<%= reply.text %>  
+				</div>
 			</div>
 
-	</div>
-
-	<% end %>
-</ul>
+		<% end %>
+	</ul>
 </div>

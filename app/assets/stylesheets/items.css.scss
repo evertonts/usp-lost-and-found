@@ -49,3 +49,30 @@
 		width: 50px;
 	}
 }
+
+.table {
+	height: 50px;
+	padding:5px 5px 5px 5px;	
+	
+	img {
+		max-height: 40px;
+	}
+	
+	.text {
+		white-space: nowrap;
+		padding:8px 5px 5px 5px;	
+		overflow: hidden;
+		text-overflow:ellipsis;
+	}
+	.image {
+		text-align: center;
+	}
+	
+	&.impar {
+		background-color: #EEE;
+	}
+}
+
+.table-header {
+	text-align: center;
+}
