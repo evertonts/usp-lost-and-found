@@ -28,7 +28,11 @@ class Item < ActiveRecord::Base
   end
   
   def show_date
-    lost_date.strftime("%d/%m/%Y") unless lost_date.nil?
+    if lost_date.nil?
+      Time.now.strftime("%d/%m/%Y")
+    else
+      lost_date.strftime("%d/%m/%Y")
+    end
   end
   
   def self.tagged_with_like(query)

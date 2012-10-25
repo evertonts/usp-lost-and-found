@@ -15,7 +15,7 @@
 <%= render "replies/view_replies"%>
 
 <div id="resposta">
-<%= link_to "Responder", new_reply_url(:message_id => @message.id), :remote => true, :id => "responder" %>
+	<%= link_to "Responder", new_reply_url(:message_id => @message.id), :remote => true, :id => "responder" %>
 </div>
 
 <div id="form-content"></div>

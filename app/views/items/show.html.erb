@@ -32,7 +32,7 @@
 	Tags: <%= raw @item.tag_list.map {|t| link_to(t, tag_path(t))}.join(', ') %>
 </p>
 
-<%unless @item.user == current_user%>
+<% if current_user && (@item.user != current_user) %>
 <div class="row">
 	<%= render "messages/send_message"%>
 </div>

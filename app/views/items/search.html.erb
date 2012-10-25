@@ -1,7 +1,93 @@
-<h3>Resultados da busca</h3>
 
+<div class="row" style="margin-bottom: 30px">
+	<% if @lost %>
+		<span class="lost title">EU PERDI</span>
+		<hr class="separador lost"/>
+		<span class="lost sub title">RESULTADOS</span>
+	<% else %>
+		<span class="found title">EU ACHEI</span>
+		<hr class="separador found"/>
+		<span class="found sub title">RESULTADOS</span>
+	<% end %>
+</div>
+
+
+<% if @lost %>
+	<div class="row lost sub title table-header">
+		
+		<div class="two columns">
+			TÍTULO
+		</div>
+		
+		<div class="four columns">
+			DESCRIÇÃO
+		</div>
+		
+		<div class="two column">
+			IMAGEM
+		</div>
+		
+		<div class="two columns">
+			DATA
+		</div>
+		
+		<div class="two columns">
+			RECOMPENSA
+		</div>
+		
+		<hr class="separador lost"/>
+	</div>
+<% else %>
+<div class="row found sub title table-header">
+	
+	<div class="two columns">
+		TÍTULO
+	</div>
+	
+	<div class="four columns">
+		DESCRIÇÃO
+	</div>
+	
+	<div class="two column">
+		IMAGEM
+	</div>
+	
+	<div class="two columns">
+		DATA
+	</div>
+	
+	<div class="two columns">
+		RECOMPENSA
+	</div>
+	
+	<hr class="separador found"/>
+</div>
+<% end %>
+	
 <ul>
-	<% for item in @items %>
-		<li><%= link_to item.title, item_path(item) %></li>
+	<% @items.each_with_index do |item, i| %>
+	
+		<div class="row table <%= 'impar' if i%(2) == 0 %>">
+
+			<div class="two columns text">
+				<%= link_to item.title, item_path(item) %>
+			</div>
+
+			<div class="four columns text">
+				<%= item.description %>
+			</div>
+
+			<div class="two column image">
+				<%= link_to image_tag(item.main_image_thumb), item.main_image %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.show_date %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.reward %>
+			</div>
+		</div>
 	<% end %>
 </ul>

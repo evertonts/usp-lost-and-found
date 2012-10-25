@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new_lost, :new_found, :create, :update, :destroy]
   before_filter :store_location
+  
   autocomplete :tag, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   load_and_authorize_resource
@@ -75,12 +76,12 @@ class ItemsController < ApplicationController
     else
       search_hash = params[:item]
     
-      lost = search_hash[:lost] == "true" ? true : false
+      @lost = search_hash[:lost] == "true" ? true : false
             
       query = "%#{search_hash[:search]}%"    
-      @items = #Item.where("lost = ? AND description LIKE ?", lost, query) \
-       Item.where("lost = ? AND title LIKE ?", lost, query) \
-      | Item.tagged_with_like(query)
+      @items = Item.where("lost = ? AND description LIKE ?", @lost, query) \
+      | Item.where("lost = ? AND title LIKE ?", @lost, query) \
+      | Item.tagged_with_like(query).reject {|x| x.lost != @lost }
       
       @items = @items.reject {|item| item.returned? }
     end
