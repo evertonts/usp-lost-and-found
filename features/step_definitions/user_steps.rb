@@ -34,21 +34,24 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in I18n.t("activerecord.attributes.user.name"), :with => @visitor[:name]
-  fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
-  fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
-  fill_in I18n.t("activerecord.attributes.user.password_confirmation"), 
+  within "#main" do
+    fill_in I18n.t("activerecord.attributes.user.name"), :with => @visitor[:name]
+    fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
+    fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
+    fill_in I18n.t("activerecord.attributes.user.password_confirmation"), 
     :with => @visitor[:password_confirmation]
-    
+  end  
   click_button I18n.t("devise.registrations.new.submit")
   find_user
 end
 
 def sign_in
   visit '/users/sign_in'
-  fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
-  fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
-  click_button I18n.t("devise.sessions.new.submit")
+  within "#main" do
+    fill_in I18n.t("activerecord.attributes.user.email"), :with => @visitor[:email]
+    fill_in I18n.t("activerecord.attributes.user.password"), :with => @visitor[:password]
+    click_button I18n.t("devise.sessions.new.submit")
+  end
 end
 
 def create_other_users_item
@@ -69,6 +72,7 @@ end
 Given /^I am logged in$/ do
   create_user
   sign_in
+  page.should have_content I18n.t("devise.sessions.signed_in")
 end
 
 Given /^I exist as a user$/ do
@@ -166,8 +170,7 @@ Then /^I should be signed in$/ do
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Cadastrar-se"
-  page.should have_content "Login"
+  page.should have_content "Cadastrar"
   page.should_not have_content "Logout"
 end
 

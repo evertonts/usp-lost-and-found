@@ -2,8 +2,8 @@
 
 def create_lost_item(description)
   visit '/items/new_lost'
-  fill_in "item_title", :with => description
-  fill_in "Descricao", :with => description
+  fill_in "Título", :with => description
+  fill_in "Descrição", :with => description
   fill_in "Recompensa", :with => 10.0
   fill_in "Data que o item foi perdido", :with => "21/09/2012"
   click_button "Criar Item"
@@ -12,7 +12,7 @@ end
 def create_found_item(description)
   visit '/items/new_found'
   fill_in "Título", :with => "novo item"
-  fill_in "Descricao", :with => "novo item"
+  fill_in "Descrição", :with => "novo item"
   fill_in "Data que o item foi encontrado", :with => "21/09/2012"
   click_button "Criar Item"
 end

@@ -13,7 +13,7 @@
 						<% if asset_fields.object.new_record? %>
 							<div class="small file button secondary file" id="files">
 								Arquivo
-							</div><div id="filename" style="max-width: 120px; overflow:hidden"></div>
+							</div><div id="filename" class="one-line" style="padding-right: 0px"></div>
 								<%= asset_fields.file_field(:asset, :style => "display: none;", :id => "file")%>
 
 						<%end%>
@@ -55,7 +55,9 @@
 	</div>		
 	
 	<div class="five columns offset-by-one">
-		
+		<% unless @item.new_record? %>
+			<%= f.input :returned, :inline_label => (@item.lost? ? "Recuperado" : "Devolvido"), :label => false%>
+		<% end %>
 	</div>
 	
 	<%=f.input :lost, :as => :hidden %>

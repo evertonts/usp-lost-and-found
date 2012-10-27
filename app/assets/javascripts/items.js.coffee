@@ -8,6 +8,10 @@ $(document).ready(() ->
 	
 	$('#file').bind('change', () ->
 		str = $(this).val()
+		console.log(str)
+		aux = str.split("\\")
+		console.log(aux)
+		str = aux[aux.length - 1]
 		$("#filename").text(str)
 	).change()
 	
