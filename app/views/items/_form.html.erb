@@ -45,7 +45,7 @@
 	</div>
 		
 	<div class="five columns offset-by-one">
-		<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete %>
+		<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete, :input_html => {:'data-delimiter' => ', '} %>
 	</div>
 
 	<div class="five columns offset-by-one">
