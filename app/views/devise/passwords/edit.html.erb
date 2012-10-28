@@ -1,4 +1,7 @@
-<h2><%= t(".title") %></h2>
+<div class="row" style="margin-bottom:30px">
+	<span class="title"><%= t(".title") %></span>
+	<hr class="separador"/>
+</div>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -6,23 +9,22 @@
 	
   <div class="row">
 		<div class="two columns">
-			<%= f.label :password, "New password" %>
+			<%= f.label :password, "Nova Senha" %>
 		</div>
 		
-		<div class="two columns">
+		<div class="two columns end">
   		<%= f.password_field :password %>
 		</div>
 	</div>
 
   <div class="row">
 		<div class="two columns">
-			<%= f.label :password_confirmation, "Confirm new password" %>
+			<%= f.label :password_confirmation, "Confirme a nova senha" %>
 		</div>
-		<div class="two columns">
+		<div class="two columns end">
   		<%= f.password_field :password_confirmation %>
 		</div>
+	</div>
 
   <div><%= f.submit t(".submit") %></div>
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -1,4 +1,7 @@
-<h2><%= t(".title") %></h2>
+<div class="row" style="margin-bottom:30px">
+	<span class="title"><%= t(".title") %></span>
+	<hr class="separador"/>
+</div>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>

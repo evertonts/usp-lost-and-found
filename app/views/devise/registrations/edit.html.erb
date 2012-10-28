@@ -1,4 +1,7 @@
-<h2><%= t(".title") %></h2>
+<div class="row" style="margin-bottom:30px">
+	<span class="title"><%= t(".title") %></span>
+	<hr class="separador"/>
+</div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -83,7 +86,7 @@
 	<p><i>(Sua senha é necessária para que as mudanças sejam efetuadas)</i></p>
 	</div>
 
-  <div><%= f.submit t(".update") %></div>
+  <div><%= f.submit t(".update"), :class => "button small secondary" %></div>
 <% end %>
 
 <h3><%= t(".cancel.title") %></h3>

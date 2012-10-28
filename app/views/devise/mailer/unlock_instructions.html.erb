@@ -1,7 +1,7 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Olá <%= @resource.name %>!</p>
 
-<p>Your account has been locked due to an excessive amount of unsuccessful sign in attempts.</p>
+<p>Sua conta está inacessível pelo grande número de tentativas de acesso.</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>Cique no link abaixo para destrancar sua conta:</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+<p><%= link_to 'Destrancar minha conta', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

@@ -1,16 +1,12 @@
-<h3>Contato</h3>
-<hr/>
-<div class = "row">
-	<div class="five columns">
-		</p>Mande uma mensagem para a equipe do ACHUSP com alguma dúvida ou sugestão que você tiver. Ficaremos felizes em ajuda-lo 
-		</p>
-	</div>
+<div class="row" style="margin-bottom:30px">
+	<span class="title">Contato</span>
+	<hr class="separador"/>
 </div>
 
-<div class="row">
+<div class="row" style="margin-top:0px" >
 	<div class="five columns">
 		<%= simple_form_for(@message, :url => contact_path) do |f| %>
-			<%= f.input :body, :label => "Mensagem", :as => :text, :input_html => {:rows => 5} %>
+			<%= f.input :body, :label => "Mande uma mensagem para a equipe do ACHUSP com alguma dúvida ou sugestão que você tiver. Ficaremos felizes em ajuda-lo ", :required => false, :as => :text, :input_html => {:rows => 5} %>
 			<%= f.submit "Enviar" %>
 		<% end %>
 	</div>

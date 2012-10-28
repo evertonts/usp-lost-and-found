@@ -1,9 +1,12 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<div class="row" style="margin-bottom:30px">
+	<span class="title">Usuários</span>
+	<hr class="separador"/>
+</div>
+
 <ul class="users">
   <% @users.each do |user| %>
     <li>
-      <%= link_to user.name, user %> signed up <%= user.created_at.to_date %>
+      <%= link_to user.name, user %> registrado em: <%= user.created_at.to_date %>
     </li>
   <% end %>
 </ul>
