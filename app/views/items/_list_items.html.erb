@@ -1,0 +1,27 @@
+<ul>
+	<% @items.each_with_index do |item, i| %>
+	
+		<div class="row table <%= 'impar' if i%(2) == 0 %>">
+
+			<div class="two columns text">
+				<%= link_to item.title, item_path(item), :class => "#{item.lost? ? 'lost' : 'found'}" %>
+			</div>
+
+			<div class="four columns text">
+				<%= item.description %>
+			</div>
+
+			<div class="two column image">
+				<%= link_to image_tag(item.main_image_thumb), item.main_image %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.show_date %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.reward %>
+			</div>
+		</div>
+	<% end %>
+</ul>

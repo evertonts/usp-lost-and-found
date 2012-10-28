@@ -18,10 +18,11 @@ UspLostAndFound::Application.routes.draw do
       get 'search'
       get 'recover'
       get 'autocomplete_tag_name'
+      get 'tag'
     end
   end
    
-  get 'tags/:tag', :to => 'items#search', :as => :tag 
+  get 'tags/:tag', :to => 'items#tag', :as => :tag 
   
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post

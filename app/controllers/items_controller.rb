@@ -88,6 +88,12 @@ class ItemsController < ApplicationController
 
   end
   
+  def tag
+    if params[:tag]
+      @items = Item.tagged_with(params[:tag])
+    end
+  end
+
   def recover 
     item = Item.find(params[:id])
     item.returned = true

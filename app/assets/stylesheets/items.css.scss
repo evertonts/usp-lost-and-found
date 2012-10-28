@@ -94,3 +94,16 @@
 li.ui-menu-item:hover {
 	background-color: #EEE;
 }
+
+.tags {
+	
+	a {
+		&.lost {
+			color: rgb(255,51,0);
+		}
+	
+		&.found {
+			color: rgb(51,153,255);
+		}
+	}
+}

@@ -59,6 +59,12 @@ a {
 	}
 }
 
+.separador {
+	margin: 3px 0px 5px 0px; 
+	border-width: 2px 0px 0px;
+	border-color: #000; 		
+}
+
 .lost {
 	
 	&.title {
@@ -70,8 +76,6 @@ a {
 	}
 	
 	&.separador {
-		margin: 3px 0px 5px 0px; 
-		border-width: 2px 0px 0px;
 		border-color: #FF3300; 		
 	}
 }
@@ -86,8 +90,6 @@ a {
 	}
 	
 	&.separador {
-		margin: 3px 0px 5px 0px; 
-		border-width: 2px 0px 0px;
 		border-color: #3399FF; 		
 	}
 }

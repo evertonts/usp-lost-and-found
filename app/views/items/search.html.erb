@@ -11,83 +11,63 @@
 	<% end %>
 </div>
 
+<% if @items.empty? %>
+	<div class="row title center">
+		Não há resultados para essa busca
+	</div>
+<% else %>
 
-<% if @lost %>
-	<div class="row lost sub title table-header">
+	<% if @lost %>
+		<div class="row lost sub title table-header">
 		
+			<div class="two columns">
+				TÍTULO
+			</div>
+		
+			<div class="four columns">
+				DESCRIÇÃO
+			</div>
+		
+			<div class="two column">
+				IMAGEM
+			</div>
+		
+			<div class="two columns">
+				DATA
+			</div>
+		
+			<div class="two columns">
+				RECOMPENSA
+			</div>
+		
+			<hr class="separador lost"/>
+		</div>
+	<% else %>
+	<div class="row found sub title table-header">
+	
 		<div class="two columns">
 			TÍTULO
 		</div>
-		
+	
 		<div class="four columns">
 			DESCRIÇÃO
 		</div>
-		
+	
 		<div class="two column">
 			IMAGEM
 		</div>
-		
+	
 		<div class="two columns">
 			DATA
 		</div>
-		
+	
 		<div class="two columns">
 			RECOMPENSA
 		</div>
-		
-		<hr class="separador lost"/>
+	
+		<hr class="separador found"/>
 	</div>
-<% else %>
-<div class="row found sub title table-header">
-	
-	<div class="two columns">
-		TÍTULO
-	</div>
-	
-	<div class="four columns">
-		DESCRIÇÃO
-	</div>
-	
-	<div class="two column">
-		IMAGEM
-	</div>
-	
-	<div class="two columns">
-		DATA
-	</div>
-	
-	<div class="two columns">
-		RECOMPENSA
-	</div>
-	
-	<hr class="separador found"/>
-</div>
-<% end %>
-	
-<ul>
-	<% @items.each_with_index do |item, i| %>
-	
-		<div class="row table <%= 'impar' if i%(2) == 0 %>">
-
-			<div class="two columns text">
-				<%= link_to item.title, item_path(item) %>
-			</div>
-
-			<div class="four columns text">
-				<%= item.description %>
-			</div>
-
-			<div class="two column image">
-				<%= link_to image_tag(item.main_image_thumb), item.main_image %>
-			</div>
-
-			<div class="two columns text">
-				<%= item.show_date %>
-			</div>
-
-			<div class="two columns text">
-				<%= item.reward %>
-			</div>
-		</div>
 	<% end %>
-</ul>
+	
+	<%= render 'list_items' %>
+<% end %>
