@@ -1,36 +1,46 @@
-<div class="row">
-	<div class="two columns">
-		<%= image_tag @item.user.avatar.url(:thumb)%> 
-	</div>
-	<div class="two columns end">
-		<h5 style="margin-top:30px"><%= @item.user.name %></h5>
-	</div>
-	<div class="two columns end">
-		<h5 style="margin-top:30px"><%= @item.lost? ? "Perdeu" : "Encontrou"%></h5>
-	</div>
-</div>
-<h3><%= @item.title %></h3>
-<h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item devolvido" if @item.returned %>
-</h4>
-<div class="row">
-	<div class="four columns" style="text-align: center;">
-			<%= link_to image_tag(@item.main_image_thumb), @item.main_image %>
+<div class="row" style="margin-bottom: 30px">
+	<div class="row">
+		<div class="two columns">
+			<%= image_tag @item.user.avatar.url(:thumb)%> 
+		</div>
 	</div>
 	
-	<div class="eight columns">
-		<p>Descrição: <%= @item.description%><br/>
-		<% if @item.lost? %>
-			Recompensa: <%= (@item.reward || "Este item não possui recompensa") %><br/>
-		<%end%>
-		Data em que o item foi <%= @item.lost? ? "perdido: " : "encontrado: "%>
-		<%=l @item.lost_date %>
-		</p>
+	<div class="two columns end title <%= @item.lost? ? "lost" : "found"%>">
+		<%= @item.user.name %>
+	</div>	
+	<hr class="separador <%= @item.lost? ? "lost" : "found"%>" />
+	<div class="two columns end sub title <%= @item.lost? ? "lost" : "found"%>">
+		<%= @item.lost? ? "Perdeu" : "Encontrou"%>
 	</div>
 </div>
 
-<p>
-	Tags: <%= raw @item.tag_list.map {|t| link_to(t, tag_path(t))}.join(', ') %>
-</p>
+
+<h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item devolvido" if @item.returned %>
+</h4>
+<div class="row item-data">
+	<div class="three columns">
+			<%= link_to image_tag(@item.main_image_medium), @item.main_image %>
+	</div>
+	
+	<div class="eight columns end">
+		<div class="six columns">
+			<p class="sub title"><%= @item.title %></p>
+		
+			<p><%= @item.description%></p>
+		</div>
+			
+		<div class="six columns end">	
+			<p>Data em que o item foi <%= @item.lost? ? "perdido: " : "encontrado: "%><br />
+			<%=l @item.lost_date %></p>
+		
+			<% if @item.lost? %>
+				<p>Recompensa: <br/> <%= (@item.reward.empty? ? "Este item não possui recompensa" : @item.reward) %></p>
+			<%end%>
+			
+			<p>Tags: <br/> <%= raw @item.tag_list.map {|t| link_to(t, tag_path(t))}.join(', ') %></p>
+		</div>
+	</div>
+</div>
 
 <% if current_user && (@item.user != current_user) %>
 <div class="row">
