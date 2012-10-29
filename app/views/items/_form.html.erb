@@ -9,13 +9,16 @@
 		<div class="six columns end offset-by-one">
 			<div class="three columns">
 				<label for="aseets">Imagem</label>
+				<% i=0 %>
 					<%= f.fields_for :assets do |asset_fields|%>
 						<% if asset_fields.object.new_record? %>
-							<div class="small file button secondary file" id="files">
-								Arquivo
-							</div><div id="filename" class="one-line" style="padding-right: 0px"></div>
-								<%= asset_fields.file_field(:asset, :style => "width:0; height:0; overflow: hidden;", :id => "file")%>
-
+							<%if i == 0 %>
+								<div class="small file button secondary file" id="files">
+									Arquivo
+								</div><div id="filename" class="one-line" style="padding-right: 0px"></div>
+									<%= asset_fields.file_field(:asset, :style => "width:0; height:0; overflow: hidden;", :id => "file")%>
+								<% i += 1%>
+							<% end %>
 						<%end%>
 					<%end%>
 			</div>

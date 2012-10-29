@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to @item, notice: 'Item cadastrado com sucesso.'
     else
+      @item.assets.build
       render action: @item.lost? ? "new_lost" : "new_found"
     end
   end
@@ -58,6 +59,7 @@ class ItemsController < ApplicationController
     if @item.update_attributes(params[:item])
       redirect_to @item, notice: 'Item atualizado com sucesso'
     else
+      @item.assets.build
       render action: "edit"
     end
   end
