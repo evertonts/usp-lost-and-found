@@ -1,48 +1,45 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-Bem vindo, <%=link_to current_user.name, user_path(current_user)%> |
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> |
-    </li>
-<%= link_to 'Contato', contact_path %>
-
+			Bem vindo, <%=link_to current_user.name, user_path(current_user)%> |
+			<%= link_to 'Editar Conta', edit_user_registration_path%> |
+    	<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> |      
+			<%= link_to 'Contato', contact_path %>
+		</li>
+    
   <% else %>
 
-<div class="row">
-<%= form_for(:user, :as => :user, :url => session_path(:user)) do |f|%>
-<div class="one columns">
-</div>
-
-<div class="one columns" style="padding-right: 0px">
-<%= f.label :email%>
-</div>
-<div class="two columns end" style="padding-left: 5px">
-<%= f.email_field :email, :style => "height: 20px; margin: 2px; padding:1px"%>
-</div>
-
-<div class="one columns" style="padding-right: 0px">
-<%= f.label :password, "Senha"%>
-</div>
-
-<div class="two columns end" style="padding-left: 5px">
-<%= f.password_field :password, :style => "height: 20px; margin: 2px; padding:1px"%>
-</div>
-
-<div class="one column end">
-<%= f.submit "Entrar", :class => "small secondary button", :style => "padding: 2.5px 10px 2.5px 10px; margin-top: 2px" %>
-</div>
-
-<div class="two columns end" style ="padding:3px 0px 0px 0px ;text-align:left">
-Ainda não é cadastrado?
-</div>
-<div class="one column end" style="padding-bottom: 7px">
-<%= link_to 'Cadastrar', new_user_registration_path, :class => "small secondary button", :style => "padding: 4.0px 10px 4.0px 10px; margin-top: 2px" %>
-</div>
-<% end %>
-
-</div>
-
-<%end%>
-
+	<div class="row">
+		<%= form_for(:user, :as => :user, :url => session_path(:user)) do |f|%>
+			<div class="one columns"> 
+			</div>
+		
+			<div class="one columns" style="padding-right: 0px">
+				<%= f.label :email%> 
+			</div>
+			<div class="two columns end" style="padding-left: 5px">
+				<%= f.email_field :email, :style => "height: 20px; margin: 2px; padding:1px"%>
+			</div>
+		
+			<div class="one columns" style="padding-right: 0px">
+				<%= f.label :password, "Senha"%> 
+			</div>
+		
+			<div class="two columns end" style="padding-left: 5px">
+				<%= f.password_field :password, :style => "height: 20px; margin: 2px; padding:1px"%>
+			</div>
+		
+			<div class="one column end">
+				<%= f.submit "Entrar", :class => "small secondary button", :style => "padding: 2.5px 10px 2.5px 10px; margin-top: 2px" %>
+			</div>
+				<div class="two columns end" style ="padding:3px 0px 0px 0px ;text-align:left">
+					Ainda não é cadastrado?
+				</div>
+				<div class="one column end" style="padding-bottom: 7px">
+					<%= link_to 'Cadastrar', new_user_registration_path, :class => "small secondary button", :style => "padding: 4.0px 10px 4.0px 10px; margin-top: 2px" %>
+				</div>
+		<% end %>
+	</div>
+	<%end%>
 
 </ul>

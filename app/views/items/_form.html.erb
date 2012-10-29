@@ -1,70 +1,73 @@
 <%= simple_form_for(@item, :html => {:multipart => true}) do |f| %>
   <%= f.error_notification %>
 
-<div class="row">
-<div class="five columns">
-<%= f.input :title, required: true %>
-</div>
+	<div class="row">
+		<div class="five columns">
+			<%= f.input :title, required: true %>
+		</div>
+		
+		<div class="six columns end offset-by-one">
+			<div class="three columns">
+				<label for="aseets">Imagem</label>
+					<%= f.fields_for :assets do |asset_fields|%>
+						<% if asset_fields.object.new_record? %>
+							<div class="small file button secondary file" id="files">
+								Arquivo
+							</div><div id="filename" class="one-line" style="padding-right: 0px"></div>
+								<%= asset_fields.file_field(:asset, :style => "width:0; height:0; overflow: hidden;", :id => "file")%>
 
-<div class="six columns end offset-by-one">
-<div class="three columns">
-<label for="aseets">Imagem</label>
-<%= f.fields_for :assets do |asset_fields|%>
-<% if asset_fields.object.new_record? %>
-<div class="small file button secondary file" id="files">
-Arquivo
-</div><div id="filename" style="max-width: 120px; overflow:hidden"></div>
-<%= asset_fields.file_field(:asset, :style => "display: none;", :id => "file")%>
+						<%end%>
+					<%end%>
+			</div>
 
-<%end%>
-<%end%>
-</div>
+			<div class="mini-images six columns end">
+				<%= f.fields_for :assets do |asset_fields|%>
+					<% unless asset_fields.object.new_record? %>
+						<div class="three columns">
+							<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)%><br/>
+							remover <%= asset_fields.check_box :_destroy%>
+						</div>
+						<% end %>
 
-<div class="mini-images six columns end">
-<%= f.fields_for :assets do |asset_fields|%>
-<% unless asset_fields.object.new_record? %>
-<div class="three columns">
-<%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original)%><br/>
-remover <%= asset_fields.check_box :_destroy%>
-</div>
-<% end %>
+				<%end%>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="row">
+  	<div class="five columns">
+			<%= f.input :description, :required => true, as: :text, :input_html => {:columns => 10, :rows => 10}%>
+		</div>
 
-<%end%>
-</div>
+	<div class="five columns offset-by-one">
+		<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado"), :input_html => {:value => @item.show_date } %>
+	</div>
+		
+	<div class="five columns offset-by-one">
+		<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete, :input_html => {:'data-delimiter' => ', '} %>
+	</div>
 
-</div>
-</div>
-
-<div class="row">
-   <div class="five columns">
-<%= f.input :description, :required => true, as: :text, :input_html => {:columns => 10, :rows => 10}%>
-</div>
-
-<div class="five columns offset-by-one">
-<%= f.input :lost_date, :required => true, :as => :string, :label => "Data que o item foi " + (@item.lost? ? "perdido" : "encontrado"), :input_html => {:value => @item.show_date } %>
-</div>
-
-<div class="five columns offset-by-one">
-<%= f.input :tag_list, :label => "Tags (separadas por virgula)", :url => autocomplete_tag_name_items_path, :as => :autocomplete %>
-</div>
-
-<div class="five columns offset-by-one">
-<% if @item.lost? %>
-<%= f.input :reward, :label => "Recompensa" %>
-<% end %>
-</div>	
-
-<div class="five columns offset-by-one">
-
-</div>
-
-<%=f.input :lost, :as => :hidden %>
-
-</div>
-
-
+	<div class="five columns offset-by-one">
+		<% if @item.lost? %>
+			<%= f.input :reward, :label => "Recompensa" %>
+		<% end %>
+	</div>		
+	
+	<div class="five columns offset-by-one">
+		<% unless @item.new_record? %>
+			<%= f.input :returned, :inline_label => (@item.lost? ? "Recuperado" : "Devolvido"), :label => false%>
+		<% end %>
+	</div>
+	
+	<%=f.input :lost, :as => :hidden %>
+	
+	</div>
+	
+		
   <div class="row">
     <%= f.button :submit, :class => "button secondary" %>
   </div>
 
 <% end %>
+

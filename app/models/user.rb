@@ -29,4 +29,5 @@ class User < ActiveRecord::Base
     Message.where("(sender_id=? AND recipient_id=?) 
       OR (sender_id=? AND recipient_id=?)", self.id, user.id, self.id, user.id).order("created_at DESC")
   end
+  
 end

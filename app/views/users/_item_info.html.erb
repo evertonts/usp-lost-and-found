@@ -1,0 +1,39 @@
+<div class="row item-data; padding: 10px">
+	<%  if @item.returned %>
+		<p style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item 	devolvido" %>
+		</p>
+	<% end %>
+	
+	<div class="three columns" style="margin: 10px 0px 10px 10px">
+			<%= link_to image_tag(@item.main_image_medium), @item.main_image %>
+	</div>
+	
+	<div class="eight columns end">
+		<div class="six columns">
+			<p class="sub title"><%= link_to @item.title, item_path(@item) %></p>
+		
+			<p><%= @item.description%></p>
+		</div>
+			
+		<div class="six columns end">	
+			<p>Data em que o item foi <%= @item.lost? ? "perdido: " : "encontrado: "%><br />
+			<%=l @item.lost_date %></p>
+		
+			<% if @item.lost? %>
+				<p>Recompensa: <br/> <%= @item.reward %></p>
+			<%end%>
+			
+			<p>Tags: <br/> <%= raw @item.tag_list.map {|t| link_to(t, tag_path(t))}.join(', ') %></p>
+			
+			<% if can? :edit, @item%>
+				<%= link_to 'Editar', edit_item_path(@item), :class=>"small button"%>
+				<%= link_to (@item.lost? ? 'Recuperado' : "Devolvido"), recover_items_path(:id => @item.id), :class=>"small button" unless @item.returned %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="padding: 10px">
+	<% @messages = @item.user_messages(current_user) %>
+	<%= render 'messages/show_messages' %>
+</div>

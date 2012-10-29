@@ -16,3 +16,39 @@ p {
 		margin: 10px;
 	}
 }
+
+.user {
+	&.title {
+		color: #D94;
+	}
+	
+	&.separador {
+		border-color: #FA5;
+	}
+	
+	&.lost {
+		color: #FF3300; 
+	}
+	
+	&.found {
+		color:#3399FF; 
+	}
+}
+
+.other {
+	&.title {
+		color: #964;
+	}
+	
+	&.separador {
+		border-color: #964;
+	}
+	
+	&.lost {
+		color: #FF3300; 
+	}
+	
+	&.found {
+		color:#3399FF; 
+	}
+}

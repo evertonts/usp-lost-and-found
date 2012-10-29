@@ -51,9 +51,7 @@
 }
 
 .table {
-	height: 50px;
-	padding:5px 5px 5px 5px;	
-	
+	height: 30px;
 	img {
 		max-height: 40px;
 	}
@@ -71,8 +69,51 @@
 	&.impar {
 		background-color: #EEE;
 	}
+	
+	&.item {
+		height: 50px;
+		padding:5px 5px 5px 5px;	
+		
+	}
 }
 
 .table-header {
 	text-align: center;
+}
+
+.ui-autocomplete{
+	width:300px !important;
+	border-style:solid;
+	border-width: .5px;
+	border-color: #bbb;
+	background-color: #FFF;
+	list-style-type: none;
+	padding: 5px;
+}
+
+.ui-menu {
+	width:300px !important;
+}
+
+li.ui-menu-item:hover {
+	background-color: #EEE;
+}
+
+.tags {
+	
+	a {
+		&.lost {
+			color: rgb(255,51,0);
+		}
+	
+		&.found {
+			color: rgb(51,153,255);
+		}
+	}
+}
+
+.item-data {
+	p {
+		margin-bottom:10px;
+	}
 }

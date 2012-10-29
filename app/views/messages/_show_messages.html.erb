@@ -1,46 +1,48 @@
-<h3>Mensagens</h3>
-	
-	<script>
-		contents = [];
-	</script>
-<% for @message in @messages %>		
-	<div class="row">
-		<hr/>
-		<div class="two columns">
-			De <%= @message.sender.name %>
-		</div>
-		<div class="two columns end">
-			Para <%= @message.recipient.name %>
-		</div>
-	</div>
-	
-	<div class="row"> 
-		<div class="five columns">
-			<h5><%= @message.title %></h5>
-		</div>
-	</div>
-		
-	<div class="row">
-		<div class="four columns end">
-			<p><%=@message.text%></p>
-		</div>
-	</div>
-	
-	<script>
-	$(document).ready(function() {
-	 	contents.push(<%=@message.id%>);
-	});
-	</script>
-	<div id="resposta-<%= @message.id %>">
-	<%= link_to "Responder", new_reply_url(:message_id => @message.id), :id => "responder-#{@message.id}" %>
-	</div>
-	<%= render "replies/view_replies" %>
-
-	<div id="form-content-<%= @message.id %>"></div>
-<% end%>
+<div style="margin: 5px 10px 10px 20px"><b>Mensagens</b></div>
 
 <script>
-	$(document).ready(function() {
-	 	Window.registerClick(contents);
-	});
+	contents = []; 
 </script>
+
+<% if @messages.empty? %>
+	<div style="margin: 5px 10px 10px 20px; text-align: center">Não há mensagens para esse item</div>
+<% else %>
+	<div style="border-style: solid; border-width: 1px; border-color:#D49; margin: 5px 10px 10px 20px; overflow: hidden;padding: 0px">
+		<% for @message in @messages %>	
+		<div style="cursor: pointer; padding-right: 0px"  id="message-<%= @message.id%>">
+
+		<div class="row" style="background-color: #DDD; padding: 0px; width: 100%; margin-left: 0px; height: 24px; padding: 5px">
+			<div class="four columns">
+				<b><%= @message.sender.name %></b>
+			</div>
+
+			<div class="three columns">
+				<%= l @message.created_at, :format => :short %>
+			</div>
+		</div>
+
+		<div class="row" style="padding: 3px 10px 10px 20px">
+			<div class="twelve columns end">
+				<p><%=@message.text%></p>
+			</div>
+		</div>
+		</div>
+		<div id="respostas-<%= @message.id %>" style="display: none">
+
+
+		<div id="resposta-<%= @message.id %>">
+			<%= link_to "Responder", new_reply_url(:message_id => @message.id), :id => "responder-#{@message.id}" %>
+		</div>
+		<%= render "replies/view_replies" %>
+
+		<div id="form-content-<%= @message.id %>"></div>
+		</div>
+
+		<script>
+		$(document).ready(function() {
+			contents.push(<%=@message.id %>);
+		});
+		</script>
+		<% end%>
+	</div>
+<% end %>

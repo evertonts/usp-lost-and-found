@@ -1,0 +1,41 @@
+<div class="row" style="margin-bottom: 30px">
+	<div class="title">TAGS</div>
+	<hr class="separador"/>
+	<div class="sub title">RESULTADOS</div>
+</div>
+
+<% if @items.empty? %>
+	<div class="row title center">
+		Não há resultados para essa busca
+	</div>
+<% else %>
+
+<div class="row sub title table-header">
+	
+	<div class="two columns">
+		TÍTULO
+	</div>
+	
+	<div class="four columns">
+		DESCRIÇÃO
+	</div>
+	
+	<div class="two column">
+		IMAGEM
+	</div>
+	
+	<div class="two columns">
+		DATA
+	</div>
+	
+	<div class="two columns">
+		RECOMPENSA
+	</div>
+	
+	<hr class="separador"/>
+</div>
+
+<div class="tags">
+	<%= render 'list_items' %>
+</div>
+<% end %>

@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     
     if @item.update_attributes(params[:item])
-      redirect_to @item, notice: 'Item was successfully updated.'
+      redirect_to @item, notice: 'Item atualizado com sucesso'
     else
       render action: "edit"
     end
@@ -88,6 +88,12 @@ class ItemsController < ApplicationController
 
   end
   
+  def tag
+    if params[:tag]
+      @items = Item.tagged_with(params[:tag])
+    end
+  end
+
   def recover 
     item = Item.find(params[:id])
     item.returned = true
