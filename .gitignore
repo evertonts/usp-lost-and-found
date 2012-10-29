@@ -73,3 +73,5 @@ db/*.sqlite3
 
 # vim artifacts
 **.swp
+
+config/app_variables.rb
