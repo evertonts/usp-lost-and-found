@@ -1,12 +1,12 @@
 <div class="row item-data; padding: 10px">
-	<div class="three columns" style="margin: 10px 0px 10px 10px">
-			<%= link_to image_tag(@item.main_image_medium), @item.main_image %>
-	</div>
-	
 	<%  if @item.returned %>
 		<p style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item 	devolvido" %>
 		</p>
 	<% end %>
+	
+	<div class="three columns" style="margin: 10px 0px 10px 10px">
+			<%= link_to image_tag(@item.main_image_medium), @item.main_image %>
+	</div>
 	
 	<div class="eight columns end">
 		<div class="six columns">
@@ -24,6 +24,11 @@
 			<%end%>
 			
 			<p>Tags: <br/> <%= raw @item.tag_list.map {|t| link_to(t, tag_path(t))}.join(', ') %></p>
+			
+			<% if can? :edit, @item%>
+				<%= link_to 'Editar', edit_item_path(@item), :class=>"small button"%>
+				<%= link_to (@item.lost? ? 'Recuperado' : "Devolvido"), recover_items_path(:id => @item.id), :class=>"small button" unless @item.returned %>
+			<% end %>
 		</div>
 	</div>
 </div>

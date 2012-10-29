@@ -5,8 +5,8 @@
 	<div class="three columns">
 		<%= image_tag(@user.avatar.url(:thumb)) %>
 	</div>
-	<div class="four columns end">
-		<h2><%= @user.name %></h2>
+	<div class="eight columns end">
+		<h3><%= @user.name %></h3>
 	</div>
 </div>
 
@@ -61,6 +61,7 @@
 			<div class="two columns text">
 				<%= item.reward %>
 			</div>
+			
 		</div>
 	
 		<div class="row" id="informacoes-<%= item.id%>" style="border-color:#D94; display:none">		
