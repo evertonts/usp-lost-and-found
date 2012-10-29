@@ -51,6 +51,10 @@ class Item < ActiveRecord::Base
     end
     items
   end
+  
+  def user_messages(user)
+    messages.select {|m| m.sender == user}
+  end
 end
 
 

@@ -1,7 +1,7 @@
 <script>
 	items = [];
 </script>
-<div class="row">
+<div class="row" style="margin-bottom: 20px">
 	<div class="three columns">
 		<%= image_tag(@user.avatar.url(:thumb)) %>
 	</div>
@@ -10,64 +10,69 @@
 	</div>
 </div>
 
+
 <div class="row" style="margin-bottom:30px">
 	<span class="title user">MEUS ITENS</span>
 	<hr class="separador user"/>
 </div>
 
-<div class="row user sub title table-header">
+<% if @items.empty? %>
+	<div class="sub title user center">Não há itens</div>
+<%else%>
+	<div class="row user sub title table-header">
 
-	<div class="two columns">
-		TÍTULO
-	</div>
-
-	<div class="four columns">
-		DESCRIÇÃO
-	</div>
-
-	<div class="two columns">
-		DATA
-	</div>
-
-	<div class="two columns">
-		RECOMPENSA
-	</div>
-
-	<hr class="separador user"/>
-</div>
-
-	<% @items.each_with_index do |item, i| %>
-	<% @item = item%>
-	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#D94;">
-
-		<div class="two columns text">
-			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
-				<%= item.title %>
-			</span>
+		<div class="two columns">
+			TÍTULO
 		</div>
 
-		<div class="four columns text">
-			<%= item.description %>
+		<div class="four columns">
+			DESCRIÇÃO
 		</div>
 
-		<div class="two columns text">
-			<%= item.show_date %>
+		<div class="two columns">
+			DATA
 		</div>
 
-		<div class="two columns text">
-			<%= item.reward %>
+		<div class="two columns">
+			RECOMPENSA
 		</div>
+
+		<hr class="separador user"/>
 	</div>
+
+		<% @items.each_with_index do |item, i| %>
+		<% @item = item%>
+		<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#D94;">
+
+			<div class="two columns text">
+				<span class ="user <%item.lost? ? 'lost' : 'found'%>">
+					<%= item.title %>
+				</span>
+			</div>
+
+			<div class="four columns text">
+				<%= item.description %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.show_date %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.reward %>
+			</div>
+		</div>
 	
-	<div class="row" id="informacoes-<%= item.id%>" style="border-color:#D94; display:none">		
-		<%= render 'item_info'%>
-	</div>
+		<div class="row" id="informacoes-<%= item.id%>" style="border-color:#D94; display:none">		
+			<%= render 'item_info'%>
+		</div>
 	
-	<script>
-	$(document).ready(function() {
-	 	items.push(<%=@item.id %>);
-	});
-	</script>
+		<script>
+		$(document).ready(function() {
+		 	items.push(<%=@item.id %>);
+		});
+		</script>
+	<% end %>
 <% end %>
 
 <div class="row" style="margin-bottom:30px; margin-top: 30px">
@@ -75,61 +80,66 @@
 	<hr class="separador other"/>
 </div>
 
-<div class="row other sub title table-header">
+<% if @others_items.empty? %>
+	<div class="sub title other center">Não há itens</div>
+<%else%>
 
-	<div class="two columns">
-		TÍTULO
-	</div>
+	<div class="row other sub title table-header">
 
-	<div class="four columns">
-		DESCRIÇÃO
-	</div>
-
-	<div class="two columns">
-		DATA
-	</div>
-
-	<div class="two columns">
-		RECOMPENSA
-	</div>
-
-	<hr class="separador other"/>
-</div>
-
-	<% @others_items.each_with_index do |item, i| %>
-	<% @item = item%>
-
-	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#964;">
-
-
-		<div class="two columns text">
-			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
-				<%= item.title %>
-			</span>
+		<div class="two columns">
+			TÍTULO
 		</div>
 
-		<div class="four columns text">
-			<%= item.description %>
+		<div class="four columns">
+			DESCRIÇÃO
 		</div>
 
-		<div class="two columns text">
-			<%= item.show_date %>
+		<div class="two columns">
+			DATA
 		</div>
 
-		<div class="two columns text">
-			<%= item.reward %>
+		<div class="two columns">
+			RECOMPENSA
 		</div>
+
+		<hr class="separador other"/>
 	</div>
+
+		<% @others_items.each_with_index do |item, i| %>
+		<% @item = item%>
+
+		<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#964;">
+
+
+			<div class="two columns text">
+				<span class ="user <%item.lost? ? 'lost' : 'found'%>">
+					<%= item.title %>
+				</span>
+			</div>
+
+			<div class="four columns text">
+				<%= item.description %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.show_date %>
+			</div>
+
+			<div class="two columns text">
+				<%= item.reward %>
+			</div>
+		</div>
 	
-	<div class="row" id="informacoes-<%= item.id%>" style="border-color:#964; display:none">		
-		<%= render 'item_info'%>
-	</div>
+		<div class="row" id="informacoes-<%= item.id%>" style="border-color:#964; display:none">		
+			<%= render 'item_info'%>
+		</div>
 	
-	<script>
-		$(document).ready(function() {
-	 		items.push(<%=@item.id %>);
-		});
-	</script>
+		<script>
+			$(document).ready(function() {
+		 		items.push(<%=@item.id %>);
+			});
+		</script>
+	<% end %>
 <% end %>
 
 <script>
