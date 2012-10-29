@@ -5,4 +5,5 @@ class Message < ActiveRecord::Base
   has_many :replies, :class_name => Reply
   
   validates :item_id, :presence => true
+  validates :text, :presence => true
 end

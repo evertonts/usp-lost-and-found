@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 30px">
+<div class="row" style="margin-bottom: 20px">
 	<div class="row">
 		<div class="two columns">
 			<%= image_tag @item.user.avatar.url(:thumb)%> 
@@ -14,9 +14,10 @@
 	</div>
 </div>
 
-
-<h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item devolvido" if @item.returned %>
-</h4>
+<%  if @item.returned %>
+	<h4 style="color: green; text-align: center;"><%= @item.lost? ? "Item recuperado" : "Item 	devolvido" %>
+	</h4>
+<% end %>
 <div class="row item-data">
 	<div class="three columns">
 			<%= link_to image_tag(@item.main_image_medium), @item.main_image %>

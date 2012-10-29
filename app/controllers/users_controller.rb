@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     @items = @user.items
     @messages = current_user.all_messages
     
+    @others_items = []
+    
+    @user.sent_messages.each do |message|
+      @others_items << message.item unless @others_items.include? message.item
+    end
+    
     respond_to do |format|
       format.js
       format.html

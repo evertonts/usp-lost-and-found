@@ -1,3 +1,6 @@
+<script>
+	items = [];
+</script>
 <div class="row">
 	<div class="three columns">
 		<%= image_tag(@user.avatar.url(:thumb)) %>
@@ -7,30 +10,155 @@
 	</div>
 </div>
 
-<h3>Items</h3>
+<div class="row" style="margin-bottom:30px">
+	<span class="title user">MEUS ITENS</span>
+	<hr class="separador user"/>
+</div>
 
-<% for item in @items %>
-	<div class="row list <%= item.lost? ? "lost" : "found" %>">
-		<div class="one column">
-			<%= link_to image_tag(item.main_image_thumb), item.main_image %>
+<div class="row user sub title table-header">
+
+	<div class="two columns">
+		TÍTULO
+	</div>
+
+	<div class="four columns">
+		DESCRIÇÃO
+	</div>
+
+	<div class="two columns">
+		DATA
+	</div>
+
+	<div class="two columns">
+		RECOMPENSA
+	</div>
+
+	<hr class="separador user"/>
+</div>
+
+	<% @items.each_with_index do |item, i| %>
+	<% @item = item%>
+	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer">
+
+		<div class="two columns text">
+			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
+				<%= item.title %>
+			</span>
 		</div>
-		
-		<div class="six columns">
-			
-			<p><%= link_to item.title, item_path(item), :class => "link" %></p>
+
+		<div class="four columns text">
+			<%= item.description %>
 		</div>
-		
-		<div class="one column end">
-			<%= link_to "Editar", edit_item_path(item), :class=>"nice small button", :style => "margin: 10px 0px 10px 0px"%>
+
+		<div class="two columns text">
+			<%= item.show_date %>
 		</div>
-		<div class="two columns end">
-			<% unless item.returned %>
-				<%= link_to item.lost? ? "Recuperado" : "Devolvido", recover_items_path(:id => item.id), :class => "nice small button", :style => "margin: 10px 0px 10px 0px"%>
-			<%end%>
+
+		<div class="two columns text">
+			<%= item.reward %>
 		</div>
 	</div>
+	
+	<div class="row" id="informacoes-<%= item.id%>" style="display:none">		
+		<%= render 'item_info'%>
+	</div>
+	
+	<script>
+	$(document).ready(function() {
+	 	items.push(<%=@item.id %>);
+	});
+	</script>
 <% end %>
 
-<%= render :partial => "messages/show_messages"%>
+<div class="row" style="margin-bottom:30px; margin-top: 30px">
+	<span class="title other">ITENS QUE MANDEI MENSAGEM</span>
+	<hr class="separador other"/>
+</div>
 
+<div class="row other sub title table-header">
+
+	<div class="two columns">
+		TÍTULO
+	</div>
+
+	<div class="four columns">
+		DESCRIÇÃO
+	</div>
+
+	<div class="two columns">
+		DATA
+	</div>
+
+	<div class="two columns">
+		RECOMPENSA
+	</div>
+
+	<hr class="separador other"/>
+</div>
+
+	<% @others_items.each_with_index do |item, i| %>
+	<% @item = item%>
+
+	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer;">
+
+		<div class="two columns text">
+			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
+				<%= item.title %>
+			</span>
+		</div>
+
+		<div class="four columns text">
+			<%= item.description %>
+		</div>
+
+		<div class="two columns text">
+			<%= item.show_date %>
+		</div>
+
+		<div class="two columns text">
+			<%= item.reward %>
+		</div>
+	</div>
+	
+	<div class="row" id="informacoes-<%= item.id%>" style="border-style:solid; display:none">		
+		<%= render 'item_info'%>
+	</div>
+	
+	<script>
+		$(document).ready(function() {
+	 		items.push(<%=@item.id %>);
+		});
+	</script>
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		
+		for (i in items) {
+			console.log($("#item-" + items[i]))
+			$("#item-" + items[i]).click(function() {
+				console.log(this);
+				_id = (this.id.split('-')[1]);
+				$("#informacoes-" + _id).toggle();
+				console.log($("#informacoes-" + _id));
+			});
+		}
+	});
+</script>
+
+
+
+<script>
+	$(document).ready(function() {
+	 	window.registerClick(contents);
+		
+		for (i in contents) {
+			$("#message-" + contents[i]).click(function() {
+				_id = (this.id.split('-')[1]);
+				console.log($("#respostas-" + _id))
+				$("#respostas-" + _id).toggle();
+			});
+		}
+	});
+</script>
 

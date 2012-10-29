@@ -51,9 +51,7 @@
 }
 
 .table {
-	height: 50px;
-	padding:5px 5px 5px 5px;	
-	
+	height: 30px;
 	img {
 		max-height: 40px;
 	}
@@ -70,6 +68,12 @@
 	
 	&.impar {
 		background-color: #EEE;
+	}
+	
+	&.item {
+		height: 50px;
+		padding:5px 5px 5px 5px;	
+		
 	}
 }
 
