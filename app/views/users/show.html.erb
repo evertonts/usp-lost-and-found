@@ -38,7 +38,7 @@
 
 	<% @items.each_with_index do |item, i| %>
 	<% @item = item%>
-	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer">
+	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#D94;">
 
 		<div class="two columns text">
 			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	
-	<div class="row" id="informacoes-<%= item.id%>" style="display:none">		
+	<div class="row" id="informacoes-<%= item.id%>" style="border-color:#D94; display:none">		
 		<%= render 'item_info'%>
 	</div>
 	
@@ -99,7 +99,8 @@
 	<% @others_items.each_with_index do |item, i| %>
 	<% @item = item%>
 
-	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer;">
+	<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#964;">
+
 
 		<div class="two columns text">
 			<span class ="user <%item.lost? ? 'lost' : 'found'%>">
@@ -120,7 +121,7 @@
 		</div>
 	</div>
 	
-	<div class="row" id="informacoes-<%= item.id%>" style="border-style:solid; display:none">		
+	<div class="row" id="informacoes-<%= item.id%>" style="border-color:#964; display:none">		
 		<%= render 'item_info'%>
 	</div>
 	
@@ -139,14 +140,27 @@
 			$("#item-" + items[i]).click(function() {
 				console.log(this);
 				_id = (this.id.split('-')[1]);
-				$("#informacoes-" + _id).toggle();
+				$("#informacoes-" + _id).toggle(0.1, function() {
+					
+					_id = (this.id.split('-')[1]);
+					if(this.style.display != 'none') {
+						$('#item-' + _id).css("border-style", "solid");
+						$('#item-' + _id).css("border-width", "2px 2px 0px 2px ");
+						$('#informacoes-' + _id).css("border-style", "solid");
+						$('#informacoes-' + _id).css("border-width", "0px 2px 2px 2px ");
+					}
+					
+					else {
+							$('#item-' + _id).css("border-style", "none");
+							$('#informacoes-' + _id).css("border-style", "none");
+					}
+					
+				});
 				console.log($("#informacoes-" + _id));
 			});
 		}
 	});
 </script>
-
-
 
 <script>
 	$(document).ready(function() {
