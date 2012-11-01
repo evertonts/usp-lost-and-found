@@ -1,3 +1,4 @@
+@search
 Feature: Search items
 
 	As a site user

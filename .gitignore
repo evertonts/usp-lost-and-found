@@ -76,3 +76,4 @@ db/*.sqlite3
 
 config/app_variables.rb
 solr/data
+solr/pids/

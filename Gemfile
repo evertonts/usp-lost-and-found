@@ -31,5 +31,6 @@ gem 'client_side_validations'
 gem 'acts-as-taggable-on'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'sunspot_test'
 
 
