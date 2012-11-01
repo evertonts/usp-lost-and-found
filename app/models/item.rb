@@ -20,6 +20,10 @@ class Item < ActiveRecord::Base
     text :title, :description
     boolean :lost
     boolean :returned
+    
+    text :tag_list do
+      tag_list.map {|tag| tag}
+    end
   end
     
   def main_image_thumb
