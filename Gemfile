@@ -29,5 +29,7 @@ gem 'validates_timeliness', '~> 3.0'
 gem 'mysql2'
 gem 'client_side_validations'
 gem 'acts-as-taggable-on'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 

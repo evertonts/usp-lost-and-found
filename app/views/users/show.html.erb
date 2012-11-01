@@ -107,7 +107,7 @@
 	</div>
 
 		<% @others_items.each_with_index do |item, i| %>
-			<% @item = item; @messages = @item.user_messages(current_user) %>
+			<% @item = item; @messages = @item.user_messages(@user) %>
 
 			<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#964;">
 

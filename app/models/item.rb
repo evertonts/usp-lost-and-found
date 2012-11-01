@@ -11,6 +11,12 @@ class Item < ActiveRecord::Base
   accepts_nested_attributes_for :assets, :allow_destroy => :true
   
   acts_as_taggable
+  
+  searchable do
+    text :title, :description
+    boolean :lost
+    boolean :returned
+  end
     
   def main_image_thumb
     if assets.empty?

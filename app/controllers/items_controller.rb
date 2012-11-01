@@ -43,6 +43,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @item.user = current_user
+    @item.returned = false
 
     if @item.save
       redirect_to @item, notice: 'Item cadastrado com sucesso.'
@@ -73,21 +74,20 @@ class ItemsController < ApplicationController
   
   def search
     
-    if params[:tag]
-      @items = Item.tagged_with(params[:tag])
-    else
-      search_hash = params[:item]
+    aux = params[:item]
+    lost = (aux[:lost] == "true") ? true : false
+    termo = aux[:search]    
     
-      @lost = search_hash[:lost] == "true" ? true : false
-            
-      query = "%#{search_hash[:search]}%"    
-      @items = Item.where("lost = ? AND description LIKE ?", @lost, query) \
-      | Item.where("lost = ? AND title LIKE ?", @lost, query) \
-      | Item.tagged_with_like(query).reject {|x| x.lost != @lost }
+    @search = Item.search do
       
-      @items = @items.reject {|item| item.returned? }
+      with(:returned, false)      
+      with(:lost, lost)
+      
+      keywords termo 
     end
-
+    
+    @lost = lost
+    @items = @search.results
   end
   
   def tag
