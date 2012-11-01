@@ -41,7 +41,7 @@
 	</div>
 
 		<% @items.each_with_index do |item, i| %>
-		<% @item = item; @messages = @item.messages %>
+		<% @item = item; @messages = @item.messages.order("created_at DESC") %>
 		<div class="row tags table <%= 'impar' if i%(2) == 0 %>" id="item-<%= item.id %>" style="cursor: pointer; border-color:#D94;">
 
 			<div class="two columns text">

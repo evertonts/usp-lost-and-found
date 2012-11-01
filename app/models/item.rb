@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Item < ActiveRecord::Base
   attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward, :title, :tag_list
   has_many :assets
@@ -7,6 +9,8 @@ class Item < ActiveRecord::Base
   validates :title, presence: true
   validates :description, :presence => true
   validates_date :lost_date
+  validates_date :lost_date, :before => lambda { Date.today + 1.day }, 
+    :before_message => "Data inválida"
   
   accepts_nested_attributes_for :assets, :allow_destroy => :true
   
@@ -59,7 +63,8 @@ class Item < ActiveRecord::Base
   end
   
   def user_messages(user)
-    messages.select {|m| m.sender == user}
+    _messages = messages.select{|m| m.sender == user}
+    _messages.sort {|a, b| b.created_at <=> a.created_at}
   end
 end
 

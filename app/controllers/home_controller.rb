@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   def index
     @users = User.all
     @item = Item.new
-    @items_lost = Item.where(:lost => true, :returned => false).order("created_at desc").limit(10).reverse
-    @items_found = Item.where(:lost => false, :returned => false).order("created_at desc").limit(10).reverse
+    @items_lost = Item.where(:lost => true, :returned => false).order("created_at DESC").limit(10)
+    @items_found = Item.where(:lost => false, :returned => false).order("created_at DESC").limit(10)
     @tags = Item.tag_counts_on(:tags) | ActsAsTaggableOn::Tag.all
 
   end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = @user.items
+    @items = @user.items.order("created_at desc")
     @messages = current_user.all_messages
     
     @others_items = []
