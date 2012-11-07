@@ -4,7 +4,7 @@
 	<div class="sub title">RESULTADOS</div>
 </div>
 
-<% if @items.empty? %>
+<% if @items.nil? || @items.empty? %>
 	<div class="row title center">
 		Não há resultados para essa busca
 	</div>
