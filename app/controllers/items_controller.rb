@@ -83,7 +83,7 @@ class ItemsController < ApplicationController
       with(:returned, false)      
       with(:lost, lost)
       
-      keywords termo 
+      keywords termo, :minimum_match => 1
     end
     
     @lost = lost
@@ -100,7 +100,13 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.returned = true
     item.save!
-    redirect_to :back
+    if @lost
+      returned = "recuperado"
+    else
+      returned = "devolvido"
+    end
+    
+    redirect_to :back, :notice => "Item marcado como #{returned}"
   end
   
 end

@@ -17,7 +17,8 @@ class Item < ActiveRecord::Base
   acts_as_taggable
   
   searchable do
-    text :title, :description
+    text :title, :boost => 2.0
+    text :description
     boolean :lost
     boolean :returned
     

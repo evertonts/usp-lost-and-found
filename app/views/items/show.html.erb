@@ -46,10 +46,12 @@
 	</div>
 </div>
 
-<% if current_user && (@item.user != current_user) %>
-<div class="row" style="margin-top: 10px">
-	<%= render "messages/send_message"%>
-</div>
+<%unless @item.returned? %>
+	<% if current_user && (@item.user != current_user) %>
+	<div class="row" style="margin-top: 10px">
+		<%= render "messages/send_message"%>
+	</div>
+	<%end%>
 <%end%>
 
 <div class="row">
