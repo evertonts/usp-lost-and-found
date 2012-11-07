@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @item = Item.new
     @items_lost = Item.where(:lost => true, :returned => false).order("created_at DESC").limit(10)
     @items_found = Item.where(:lost => false, :returned => false).order("created_at DESC").limit(10)
-    @tags = Item.tag_counts_on(:tags) | ActsAsTaggableOn::Tag.all
+    @tags = Item.tag_counts_on(:tags).order("name")
 
   end
 end

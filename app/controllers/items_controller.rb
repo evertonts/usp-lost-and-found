@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   
   def tag
     if params[:tag]
-      @items = Item.tagged_with(params[:tag]).order('created_at DESC')
+      @items = Item.tagged_with(params[:tag]).order('created_at DESC').reject! {|x| x.returned?}
     end
   end
 
