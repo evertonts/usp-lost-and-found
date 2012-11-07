@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   
   def tag
     if params[:tag]
-      @items = Item.tagged_with(params[:tag])
+      @items = Item.tagged_with(params[:tag]).order('created_at DESC')
     end
   end
 
@@ -100,7 +100,8 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.returned = true
     item.save!
-    if @lost
+    
+    if item.lost?
       returned = "recuperado"
     else
       returned = "devolvido"
