@@ -45,5 +45,11 @@
 		</div>
   <% end -%>
 
-  <div class="submit"><%= f.submit t(".submit"), :class => "button small secondary" %></div>
+  <div class="submit">
+		<%= f.submit t(".submit"), :class => "button small secondary" %> ou
+		<%=link_to 'Cadastre-se', new_user_registration_path %>
+	</div>
+	
 <% end %>
+
+<%= link_to 'Esqueci minha senha', new_user_password_path %>
