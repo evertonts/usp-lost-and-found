@@ -79,8 +79,7 @@ class ItemsController < ApplicationController
     termo = aux[:search] 
     
     if termo.blank?   
-      @items = Item.all.sort! {|a, b| b.created_at <=> a.created_at}
-      @items = @items.reject! {|x| x.returned?}
+      @items = Item.where(:lost => lost, :returned => false).sort! {|a, b| b.created_at <=> a.created_at}
     else
       @search = Item.search do
       
