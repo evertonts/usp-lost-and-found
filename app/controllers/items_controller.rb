@@ -80,6 +80,7 @@ class ItemsController < ApplicationController
     
     if termo.blank?   
       @items = Item.all.sort! {|a, b| b.created_at <=> a.created_at}
+      @items = @items.reject! {|x| x.returned?}
     else
       @search = Item.search do
       
