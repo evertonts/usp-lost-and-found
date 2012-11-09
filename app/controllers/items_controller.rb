@@ -76,18 +76,24 @@ class ItemsController < ApplicationController
     
     aux = params[:item]
     lost = (aux[:lost] == "true") ? true : false
-    termo = aux[:search]    
+    termo = aux[:search] 
     
-    @search = Item.search do
+    if termo.blank?   
+      @items = Item.all.sort! {|a, b| b.created_at <=> a.created_at}
+    else
+      @search = Item.search do
       
-      with(:returned, false)      
-      with(:lost, lost)
+        with(:returned, false)      
+        with(:lost, lost)
       
-      keywords termo, :minimum_match => 1
+        keywords termo, :minimum_match => 1
+      end
+      @items = @search.results
     end
     
+    
     @lost = lost
-    @items = @search.results
+
   end
   
   def tag
