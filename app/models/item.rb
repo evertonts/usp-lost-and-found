@@ -59,14 +59,6 @@ class Item < ActiveRecord::Base
     end
   end
   
-  def self.tagged_with_like(query)
-    items = []
-    ActsAsTaggableOn::Tag.where("name LIKE ?", "%#{query}%").each do |tag|
-      items.concat Item.tagged_with(tag)
-    end
-    items
-  end
-  
   def user_messages(user)
     _messages = messages.select{|m| m.sender == user}
     _messages.sort {|a, b| b.created_at <=> a.created_at}

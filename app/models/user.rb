@@ -25,9 +25,4 @@ class User < ActiveRecord::Base
     aux
   end
   
-  def conversation_with(user)
-    Message.where("(sender_id=? AND recipient_id=?) 
-      OR (sender_id=? AND recipient_id=?)", self.id, user.id, self.id, user.id).order("created_at DESC")
-  end
-  
 end

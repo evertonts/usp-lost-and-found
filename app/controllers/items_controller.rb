@@ -6,15 +6,9 @@ class ItemsController < ApplicationController
 
   load_and_authorize_resource
   
-  
   def new_item
     @item = Item.new
     @item.assets.build
-  end
-  
-  # GET /items
-  def index
-    @items = Item.all
   end
 
   def new_lost

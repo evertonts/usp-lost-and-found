@@ -10,7 +10,6 @@ class ContactController < ApplicationController
   def create
     @message = ContactMessage.new(params[:contact_message])
     
-    puts "n\n\n\n\n\n" + @message.body
     @message.name = current_user.name
     @message.email = current_user.email
     

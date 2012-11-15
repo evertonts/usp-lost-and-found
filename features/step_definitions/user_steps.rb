@@ -1,4 +1,4 @@
-### UTILITY METHODS ###
+# encoding: utf-8
 
 def create_visitor
   @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
@@ -61,6 +61,12 @@ end
 def send_message message
   visit "/items/" + @item.id.to_s
   fill_in I18n.t("string.send_lost_message"), :with => message
+  click_button "Enviar"
+end
+
+def send_contact_message
+  visit "/contact/"
+  fill_in "contact_message_body", :with => message
   click_button "Enviar"
 end
 
@@ -162,6 +168,10 @@ When /^I send a message to other user "(.*?)"$/ do |message|
   send_message(message)
 end
 
+When /^I send a contact message "(.*?)"$/ do |arg1|
+  send_contact_message
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -224,11 +234,20 @@ Then /^I should see an item "(.*?)"$/ do |item|
 end
 
 Then /^I should see the sign in page$/ do
+  page.should have_content "Para continuar, faça login ou registre-se."
   page.should have_content "Login"
+  
 end
 
 Then /^I should see this message on my inbox "(.*?)"$/ do |message|
   visit "/users/" + @user.id.to_s
   page.should have_content(message)
 end
+
+Then /^I should see a contact message sended message$/ do
+  page.should have_content("Sua mensagem foi enviada")
+end
+
+
+
 
