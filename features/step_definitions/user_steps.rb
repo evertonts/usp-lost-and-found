@@ -172,6 +172,20 @@ When /^I send a contact message "(.*?)"$/ do |arg1|
   send_contact_message
 end
 
+When /^Someone send me a message$/ do
+  create_other_user
+  create_lost_item("Estojo", "material escolar")
+  FactoryGirl.create(:message, :sender_id => @other.id, :recipient_id => @user.id, 
+    :text => "Message", :item_id => Item.last.id)
+  visit "/"
+end
+
+When /^i see this message$/ do
+  visit "/users/" + @user.id.to_s
+  find("#item-" + Item.last.id.to_s).click
+  visit "/users/" + @user.id.to_s
+end
+
 ### THEN ###
 Then /^I should be signed in$/ do
   page.should have_content "Logout"
@@ -248,6 +262,13 @@ Then /^I should see a contact message sended message$/ do
   page.should have_content("Sua mensagem foi enviada")
 end
 
+Then /^I should see a new message notification$/ do
+  page.should have_content(@user.name + " (1)")
+end
+
+Then /^i shouldn't see a new message notification$/ do
+  page.should_not have_content(@user.name + " (1)")
+end
 
 
 

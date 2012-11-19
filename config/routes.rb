@@ -6,7 +6,15 @@ UspLostAndFound::Application.routes.draw do
   
   root :to => "home#index"
   devise_for :users
-  resources :users, :only => [:show, :index]
+  resources :users do 
+    collection do
+      get 'show'
+      get 'index'
+    end
+  end
+  
+  match "mark_as_read/:item_id", :controller => :messages, :action => 'mark_as_read', :via => :get
+  
   
   resources :messages
   resources :replies  

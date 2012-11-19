@@ -18,6 +18,10 @@ class Ability
         user1 == user
       end
       
+      can :mark_as_read, Message do |message|
+        message.recipient == user
+      end
+      
       can :create, Message
       
       can :show, Message do |message|

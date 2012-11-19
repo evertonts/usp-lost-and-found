@@ -15,6 +15,5 @@
 //= require jquery-ui
 //= require foundation
 //= require_tree .
-//= require rails.validations
 //= require autocomplete-rails
 

@@ -1,7 +1,11 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-			Bem vindo, <%=link_to current_user.name, user_path(current_user)%> |
+			Bem vindo, <%=link_to current_user.name, user_path(current_user) %> 
+			<% unless current_user.received_messages.select{|m| m.unread? current_user}.empty? %>
+				(<%= current_user.received_messages.select{|m| m.unread? current_user}.count%>)
+			<% end %>
+			|
 			<%= link_to 'Editar Conta', edit_user_registration_path%> |
     	<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> |      
 			<%= link_to 'Contato', contact_path %>

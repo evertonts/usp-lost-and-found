@@ -6,4 +6,6 @@ class Message < ActiveRecord::Base
   
   validates :item_id, :presence => true
   validates :text, :presence => true
+  
+  acts_as_readable :on => :created_at
 end

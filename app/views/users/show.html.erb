@@ -1,3 +1,5 @@
+
+
 <script>
 	items = [];
 </script>
@@ -25,12 +27,16 @@
 			TÍTULO
 		</div>
 
-		<div class="four columns">
+		<div class="three columns">
 			DESCRIÇÃO
 		</div>
 
 		<div class="two columns">
 			DATA
+		</div>
+		
+		<div class="three columns">
+			NOVAS MENSAGENS
 		</div>
 
 		<div class="two columns">
@@ -50,12 +56,16 @@
 				</span>
 			</div>
 
-			<div class="four columns text">
+			<div class="three columns text">
 				<%= item.description %>
 			</div>
 
 			<div class="two columns text">
 				<%= item.show_date %>
+			</div>
+			
+			<div class="three columns center">
+				<%= item.messages.select {|m| m.unread? @user}.count %>
 			</div>
 
 			<div class="two columns text">
@@ -91,12 +101,16 @@
 			TÍTULO
 		</div>
 
-		<div class="four columns">
+		<div class="three columns">
 			DESCRIÇÃO
 		</div>
 
 		<div class="two columns">
 			DATA
+		</div>
+		
+		<div class="three columns">
+			NOVAS MENSAGENS
 		</div>
 
 		<div class="two columns">
@@ -118,12 +132,16 @@
 					</span>
 				</div>
 
-				<div class="four columns text">
+				<div class="three columns text">
 					<%= item.description %>
 				</div>
 
 				<div class="two columns text">
 					<%= item.show_date %>
+				</div>
+				
+				<div class="three columns center">
+					<%= item.messages.select {|m| m.unread? @user}.count %>
 				</div>
 
 				<div class="two columns text">
@@ -149,8 +167,10 @@
 		for (i in items) {
 			console.log($("#item-" + items[i]))
 			$("#item-" + items[i]).click(function() {
-				console.log(this);
 				_id = (this.id.split('-')[1]);
+				$.ajax({
+					url: "/mark_as_read/" + _id
+				})
 				$("#informacoes-" + _id).toggle(0.1, function() {
 					
 					_id = (this.id.split('-')[1]);
@@ -167,7 +187,6 @@
 					}
 					
 				});
-				console.log($("#informacoes-" + _id));
 			});
 		}
 	});
@@ -180,7 +199,6 @@
 		for (i in contents) {
 			$("#message-" + contents[i]).click(function() {
 				_id = (this.id.split('-')[1]);
-				console.log($("#respostas-" + _id))
 				$("#respostas-" + _id).toggle();
 			});
 		}

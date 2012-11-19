@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   
   validates :name, :presence => true
   
+  acts_as_reader
+  
   def all_messages
     aux = sent_messages
     aux = aux + received_messages
