@@ -7,7 +7,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 	gem 'compass-rails', '~> 1.0.3'
 	gem 'zurb-foundation', '~> 3.0.9'
-	gem 'rails3-jquery-autocomplete'
 end
 gem 'therubyracer', '~> 0.9.9'
 gem 'jquery-rails'
@@ -31,4 +30,5 @@ gem 'acts-as-taggable-on'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'sunspot_test'
+gem 'rails3-jquery-autocomplete'
 
