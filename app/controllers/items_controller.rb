@@ -112,6 +112,6 @@ class ItemsController < ApplicationController
   
   def recovered
     @lost = params[:lost] == 'true' ? true : false
-    @items = Item.where(:returned => true)
+    @items = Item.where(:returned => true, :lost => @lost)
   end
 end
