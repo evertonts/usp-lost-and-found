@@ -63,6 +63,33 @@ class Item < ActiveRecord::Base
     _messages = messages.select{|m| m.sender == user}
     _messages.sort {|a, b| b.created_at <=> a.created_at}
   end
+  
+  def unread_messages(user)
+    messages.select{|m| m.recipient == user && m.unread?}
+  end
+  
+  def unread_replies(user)
+    unread = []
+    messages.select{|m| (m.sender == user) || (m.recipient == user) }.each do |message|
+      unread.concat message.replies.select{|r| (r.user != user) && r.unread? }
+    end
+    
+    unread
+  end
+  
+  def all_unread_count(user)
+    unread_messages(user).count + unread_replies(user).count
+  end
+  
+  def all_unread_presentation(user)
+    count = all_unread_count(user)
+    if count == 0
+      "Não há novas mensagens"
+    else
+      count
+    end
+  end
+  
 end
 
 

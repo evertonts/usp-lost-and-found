@@ -7,5 +7,16 @@ class Message < ActiveRecord::Base
   validates :item_id, :presence => true
   validates :text, :presence => true
   
-  acts_as_readable :on => :created_at
+  def unread?
+    !read?
+  end
+  
+  def read!
+    update_attributes(:read => true)
+  end
+  
+  def unread_replies
+    replies.select{|r| r.unread?}
+  end
+  
 end

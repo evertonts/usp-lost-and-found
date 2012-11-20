@@ -19,12 +19,34 @@ class User < ActiveRecord::Base
   
   validates :name, :presence => true
   
-  acts_as_reader
-  
   def all_messages
     aux = sent_messages
     aux = aux + received_messages
     aux
   end
   
+  def unread_messages    
+    received_messages.select{|m| m.unread?}
+  end
+  
+  def unread_replies    
+    unread = []
+    for message in all_messages
+      unread.concat message.replies.select{|r| (r.user != self) && r.unread? }
+    end
+    unread
+  end
+  
+  def all_unread_count
+    unread_messages.count + unread_replies.count
+  end
+  
+  def name_with_message_count
+    if self.all_unread_count() == 0
+      name
+    else
+      name + " (#{self.all_unread_count()})"
+    end
+  end
+
 end

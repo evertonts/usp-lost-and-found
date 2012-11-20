@@ -24,18 +24,5 @@ class UsersController < ApplicationController
       format.html
     end
   end
-  
-  def mark_as_read
-    puts "\n\n\n\n\n\nENTREI\n\n\n\n\n\n"
-    item = Item.find(params[:item_id])
-    puts "\n\n\n\n\nLALALAL\n\n\n\n\n\n\n"
-    
-    for message in item.messages
-      message.mark_as_read!(:for => current_user) if Message.unread_by(current_user).include? message
-    end
-    respond_to do |format|
-      format.js
-    end
-  end
 
 end

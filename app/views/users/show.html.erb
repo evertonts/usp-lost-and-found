@@ -64,8 +64,8 @@
 				<%= item.show_date %>
 			</div>
 			
-			<div class="three columns center">
-				<%= item.messages.select {|m| m.unread? @user}.count %>
+			<div class="three columns center text">
+				<%= item.all_unread_presentation(current_user) %>
 			</div>
 
 			<div class="two columns text">
@@ -140,8 +140,8 @@
 					<%= item.show_date %>
 				</div>
 				
-				<div class="three columns center">
-					<%= item.messages.select {|m| m.unread? @user}.count %>
+				<div class="three columns center text">
+					<%= item.all_unread_presentation(current_user) %>
 				</div>
 
 				<div class="two columns text">
@@ -169,7 +169,7 @@
 			$("#item-" + items[i]).click(function() {
 				_id = (this.id.split('-')[1]);
 				$.ajax({
-					url: "/mark_as_read/" + _id
+					url: "/messages/mark_as_read/" + _id
 				})
 				$("#informacoes-" + _id).toggle(0.1, function() {
 					
@@ -199,6 +199,9 @@
 		for (i in contents) {
 			$("#message-" + contents[i]).click(function() {
 				_id = (this.id.split('-')[1]);
+				$.ajax({
+					url: "/replies/mark_as_read/" + _id
+				})
 				$("#respostas-" + _id).toggle();
 			});
 		}

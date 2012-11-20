@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121115230814) do
+ActiveRecord::Schema.define(:version => 20121119200532) do
 
   create_table "assets", :force => true do |t|
     t.string   "asset_file_name"
@@ -48,26 +48,19 @@ ActiveRecord::Schema.define(:version => 20121115230814) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.string   "title"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "item_id"
+    t.boolean  "read",         :default => false
   end
-
-  create_table "read_marks", :force => true do |t|
-    t.integer  "readable_id"
-    t.integer  "user_id",                     :null => false
-    t.string   "readable_type", :limit => 20, :null => false
-    t.datetime "timestamp"
-  end
-
-  add_index "read_marks", ["user_id", "readable_type", "readable_id"], :name => "index_read_marks_on_user_id_and_readable_type_and_readable_id"
 
   create_table "replies", :force => true do |t|
     t.integer  "message_id"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "read",       :default => false
   end
 
   create_table "roles", :force => true do |t|

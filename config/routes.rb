@@ -13,7 +13,8 @@ UspLostAndFound::Application.routes.draw do
     end
   end
   
-  match "mark_as_read/:item_id", :controller => :messages, :action => 'mark_as_read', :via => :get
+  match "messages/mark_as_read/:item_id", :controller => :messages, :action => 'mark_as_read', :via => :get
+  match "replies/mark_as_read/:message_id", :controller => :replies, :action => 'mark_as_read', :via => :get
   
   
   resources :messages

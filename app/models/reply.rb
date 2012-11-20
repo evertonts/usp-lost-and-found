@@ -6,6 +6,11 @@ class Reply < ActiveRecord::Base
   validates :user_id, presence: true
   validates :message_id, presence: true
   
-  acts_as_readable :on => :created_at
+  def unread?
+    !read?
+  end  
   
+  def read!
+    update_attributes(:read => true)
+  end
 end

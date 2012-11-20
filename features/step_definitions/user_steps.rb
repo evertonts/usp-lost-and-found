@@ -26,6 +26,18 @@ def create_other_user
   @other = FactoryGirl.create(:user, name: "Outro", email: "outro@mail.com")
 end
 
+def create_other_message
+  create_other_user
+  create_lost_item("Estojo", "material escolar")
+  FactoryGirl.create(:message, :sender_id => @other.id, :recipient_id => @user.id, 
+    :text => "Message", :item_id => Item.last.id)
+end
+
+def create_other_reply
+  FactoryGirl.create(:reply, :user_id => @other.id, :message_id => Message.last.id, 
+    :text => "Message")
+end
+
 def delete_user
   @user ||= User.first conditions: {:email => @visitor[:email]}
   @user.destroy unless @user.nil?
@@ -173,10 +185,7 @@ When /^I send a contact message "(.*?)"$/ do |arg1|
 end
 
 When /^Someone send me a message$/ do
-  create_other_user
-  create_lost_item("Estojo", "material escolar")
-  FactoryGirl.create(:message, :sender_id => @other.id, :recipient_id => @user.id, 
-    :text => "Message", :item_id => Item.last.id)
+  create_other_message
   visit "/"
 end
 
@@ -184,6 +193,20 @@ When /^i see this message$/ do
   visit "/users/" + @user.id.to_s
   find("#item-" + Item.last.id.to_s).click
   visit "/users/" + @user.id.to_s
+end
+
+When /^Someone send me a reply$/ do
+  create_other_message
+  Message.last.read!
+  create_other_reply
+  visit "/"
+end
+
+When /^i see this reply$/ do
+  visit "/users/" + @user.id.to_s
+  find("#item-" + Item.last.id.to_s).click
+  find("#message-" + Message.last.id.to_s).click
+  visit "/"
 end
 
 ### THEN ###

@@ -31,5 +31,4 @@ gem 'acts-as-taggable-on'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'sunspot_test'
-gem 'unread'
 

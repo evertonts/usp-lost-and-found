@@ -13,7 +13,7 @@
 
 		<div class="row" style="background-color: #DDD; padding: 0px; width: 100%; margin-left: 0px; height: 24px; padding: 5px">
 			<div class="four columns">
-				<b><%= @message.sender.name %></b>
+				<b><%= @message.sender.name %></b><%= "(#{ @message.unread_replies.count})" unless @message.unread_replies.empty? %>
 			</div>
 
 			<div class="three columns">

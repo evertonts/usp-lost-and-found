@@ -3,15 +3,7 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
   load_and_authorize_resource
-  
-  after_filter :read, :only => [:create]
-  
-  def read
-    User.all.each do |user|
-      @message.mark_as_read! :for => user unless @message.recipient == user
-    end
-  end
-  
+    
   def create
     @message = Message.new(params[:message])
     @message.item = Item.find(params[:item_id])
@@ -33,8 +25,10 @@ class MessagesController < ApplicationController
   def mark_as_read
     item = Item.find(params[:item_id])
     
-    for message in item.messages
-      message.mark_as_read!(:for => current_user) if Message.unread_by(current_user).include? message
+    for message in item.unread_messages(current_user)
+      if(message.recipient == current_user)
+        message.read!
+      end
     end
     respond_to do |format|
       format.js
