@@ -110,4 +110,8 @@ class ItemsController < ApplicationController
     redirect_to :back, :notice => "Item marcado como #{returned}"
   end
   
+  def recovered
+    @lost = params[:lost] == 'true' ? true : false
+    @items = Item.where(:returned => true)
+  end
 end

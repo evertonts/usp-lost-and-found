@@ -28,6 +28,7 @@ UspLostAndFound::Application.routes.draw do
       get 'recover'
       get 'autocomplete_tag_name'
       get 'tag'
+      get 'recovered'
     end
   end
    

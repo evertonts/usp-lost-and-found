@@ -33,6 +33,9 @@
 				<a class="secondary small button" href="<%=new_lost_items_path%>">Cadastrar</a>
 				
 			</div>
+			<div class="nine columns end">
+				<p>Veja os <%= link_to "items recuperados.", recovered_items_path(:lost => true) %></p>
+			</div>
 		</div>
 		
 		<div class="row" style="margin-top: 20px">
@@ -90,9 +93,13 @@
 				Encontrou um objeto e quer devolve-lo?
 				Cadastre-o aqui e encontre o dono.
 			</div>
-			
+
 			<div class="three columns right">
 				<a class="secondary small button" href="<%=new_found_items_path%>">Cadastrar</a>
+			</div>
+			
+			<div class="nine columns end">
+				<p>Veja os <%= link_to "items devolvidos.", recovered_items_path(:lost => false) %></p>
 			</div>
 		</div>
 		

@@ -1,0 +1,73 @@
+
+<div class="row" style="margin-bottom: 30px">
+	<% if @lost %>
+		<span class="lost title">EU PERDI</span>
+		<hr class="separador lost"/>
+		<span class="lost sub title">SOLUCIONADOS</span>
+	<% else %>
+		<span class="found title">EU ACHEI</span>
+		<hr class="separador found"/>
+		<span class="found sub title">SOLUCIONADOS</span>
+	<% end %>
+</div>
+
+<% if @items.empty? %>
+	<div class="row title center">
+		Ainda não há itens <%= @lost ? "recuperados" : "devolvidos" %>
+	</div>
+<% else %>
+
+	<% if @lost %>
+		<div class="row lost sub title table-header">
+		
+			<div class="two columns">
+				TÍTULO
+			</div>
+		
+			<div class="four columns">
+				DESCRIÇÃO
+			</div>
+		
+			<div class="two column">
+				IMAGEM
+			</div>
+		
+			<div class="two columns">
+				DATA
+			</div>
+		
+			<div class="two columns">
+				RECOMPENSA
+			</div>
+		
+			<hr class="separador lost"/>
+		</div>
+	<% else %>
+	<div class="row found sub title table-header">
+	
+		<div class="two columns">
+			TÍTULO
+		</div>
+	
+		<div class="four columns">
+			DESCRIÇÃO
+		</div>
+	
+		<div class="two column">
+			IMAGEM
+		</div>
+	
+		<div class="two columns">
+			DATA
+		</div>
+	
+		<div class="two columns">
+			RECOMPENSA
+		</div>
+	
+		<hr class="separador found"/>
+	</div>
+	<% end %>
+	
+	<%= render 'list_items' %>
+<% end %>
