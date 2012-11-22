@@ -8,7 +8,7 @@ class Ability
     else
       can :show, Item
       can [:create, :new_lost, :new_found, :autocomplete_tag_name, :tag], Item
-      can [:search], Item
+      can [:search, :recovered], Item
       
       can [:update, :destroy, :recover], Item do |item|
         item.user == user
