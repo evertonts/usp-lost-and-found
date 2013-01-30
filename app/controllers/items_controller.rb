@@ -1,4 +1,4 @@
-
+require 'ItemRecomender'
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new_lost, :new_found, :create, :update, :destroy]
   before_filter :store_location
@@ -26,8 +26,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @message = Message.new
-    @recomendeds = []
-    
+        
     if @item.user == current_user
       lost = !@item.lost
       @same_user = true
@@ -35,16 +34,9 @@ class ItemsController < ApplicationController
       lost = @item.lost
       @same_user = false
     end
+      
+    @recomendeds = ItemRecomender.similar(@item, 5, lost)
     
-    for item in Item.where(:lost => lost, :returned => false) do
-      corpus = TfIdfSimilarity::Collection.new
-      corpus << TfIdfSimilarity::Document.new(@item.description)
-      corpus << TfIdfSimilarity::Document.new(item.description)
-      puts corpus.similarity_matrix[1]
-      if corpus.similarity_matrix[1] > 0.7
-        @recomendeds.push item unless item == @item
-      end      
-    end
   end
 
   def edit
