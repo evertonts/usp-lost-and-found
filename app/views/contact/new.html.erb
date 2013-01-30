@@ -4,12 +4,16 @@
 </div>
 
 <div class="row" style="margin-top:0px" >
+			<p style="margin-top:0px">Mande uma mensagem para a equipe do ACHUSP com alguma dúvida ou sugestão que você tiver. Ficaremos felizes em ajuda-lo</p>
 	<div class="five columns">
+
 		<%= simple_form_for(@message, :url => contact_path) do |f| %>
 			<% unless @login %>
+				<%= f.input :name, :label => "Nome" %>
 				<%= f.input :email, :as => :email%>
+				<%= f.hidden_field :login, :value => @login %>
 			<% end %>
-			<%= f.input :body, :label => "Mande uma mensagem para a equipe do ACHUSP com alguma dúvida ou sugestão que você tiver. Ficaremos felizes em ajuda-lo ", :required => false, :as => :text, :input_html => {:rows => 5} %>
+			<%= f.input :body, :label => "Mensagem", :required => false, :as => :text, :input_html => {:rows => 5} %>
 			<%= f.submit "Enviar" %>
 		<% end %>
 	</div>

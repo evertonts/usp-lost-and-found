@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
       corpus << TfIdfSimilarity::Document.new(item.description)
       puts corpus.similarity_matrix[1]
       if corpus.similarity_matrix[1] > 0.7
-        @recomendeds.push item
+        @recomendeds.push item unless item == @item
       end      
     end
   end
