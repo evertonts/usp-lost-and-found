@@ -11,7 +11,7 @@ class ContactController < ApplicationController
     p = params[:contact_message]
     @message.body = p[:body]
     
-    if p[:login] == "true"
+    if p[:login] != "false"
       @message.name = current_user.name
       @message.email = current_user.email
     else
