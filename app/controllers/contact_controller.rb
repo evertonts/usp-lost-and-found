@@ -5,6 +5,7 @@ class ContactController < ApplicationController
     
   def new
     @message = ContactMessage.new    
+    @login = !current_user.nil?
   end
   
   def create

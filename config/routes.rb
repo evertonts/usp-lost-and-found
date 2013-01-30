@@ -36,6 +36,7 @@ UspLostAndFound::Application.routes.draw do
   
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
+  match 'sobre' => 'contact#about', :as => 'about', :via => :get
 end
 
 ActionDispatch::Routing::Translator.translate_from_file(

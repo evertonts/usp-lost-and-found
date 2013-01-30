@@ -34,5 +34,4 @@ class MessagesController < ApplicationController
       format.js
     end
   end
-  
 end

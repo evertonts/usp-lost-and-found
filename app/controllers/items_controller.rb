@@ -1,3 +1,4 @@
+
 class ItemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new_lost, :new_found, :create, :update, :destroy]
   before_filter :store_location
@@ -25,15 +26,32 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @message = Message.new
+    @recomendeds = []
+    
+    if @item.user == current_user
+      lost = !@item.lost
+      @same_user = true
+    else
+      lost = @item.lost
+      @same_user = false
+    end
+    
+    for item in Item.where(:lost => lost, :returned => false) do
+      corpus = TfIdfSimilarity::Collection.new
+      corpus << TfIdfSimilarity::Document.new(@item.description)
+      corpus << TfIdfSimilarity::Document.new(item.description)
+      puts corpus.similarity_matrix[1]
+      if corpus.similarity_matrix[1] > 0.7
+        @recomendeds.push item
+      end      
+    end
   end
 
-  # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
     @item.assets.build
   end
 
-  # POST /items
   def create
     @item = Item.new(params[:item])
     @item.user = current_user

@@ -31,4 +31,5 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'sunspot_test'
 gem 'rails3-jquery-autocomplete'
-
+gem 'gsl'
+gem 'tf-idf-similarity'

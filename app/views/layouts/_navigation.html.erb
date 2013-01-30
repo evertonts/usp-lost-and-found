@@ -4,8 +4,7 @@
 			Bem vindo, <%=link_to current_user.name_with_message_count, user_path(current_user) %> 
 			|
 			<%= link_to 'Editar Conta', edit_user_registration_path%> |
-    	<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %> |      
-			<%= link_to 'Contato', contact_path %>
+    	<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>   
 		</li>
     
   <% else %>

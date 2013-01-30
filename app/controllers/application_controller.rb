@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
          redirect_to root_path, :alert => exception.message
       end
     else
-      # Adds the protected page to the login url but only if the user is not logged in
       redirect_to user_session_path(:next => request.path)
     end
   end

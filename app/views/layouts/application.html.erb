@@ -36,10 +36,22 @@
       <div id="main" role="main" class="row">
         <%= yield %>
       </div>
-      <footer style="margin-top:10px; text-align:center;background-color:#666; height:40px; color:#EEE; padding: 10px; width:100%;position: absolute; bottom: 0px;">
-
-				ACHUSP - Licenciado sob a  <a style="color: #FFF" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License versão 3 ou superior.</a>
-
+      <footer style="margin-top:10px; background-color:#666; height:50px; color:#EEE; padding: 15px; width:100%;position: absolute; bottom: 0px;">
+	<div class="row">
+			<div class="two columns" >
+											<%= link_to(image_tag("botao_facebook.png", {:size => '32x32', :style => "margin-bottom: 0px; position:relative; bottom: 5px; left: 80px "}), "https://www.facebook.com/pages/Achusp/368103986620301", :style => "margin: 0px; padding:0px; font-size: 0px ")%>
+			</div>
+			<div class="four columns end">
+	
+				<%= link_to "Home", root_path%>
+				<%=	link_to "Sobre o ACHUSP", about_path %>
+				<%= link_to "Contato", contact_path%>
+				
+			
+			</div>
+			<div class="one column"></div>
+			Site licenciado sob a <a style="margin:0px" href="http://www.gnu.org/licenses/agpl.html">GNU AGPL</a> versão 3 ou superior
+			</div>
       </footer>
     </div> <!--! end of #container -->
   </body>

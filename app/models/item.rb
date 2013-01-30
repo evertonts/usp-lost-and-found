@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class Item < ActiveRecord::Base
   attr_accessible :assets_attributes, :description, :lost_date, :lost, :returned, :reward, :title, :tag_list
   has_many :assets
