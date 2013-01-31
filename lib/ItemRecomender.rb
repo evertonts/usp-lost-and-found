@@ -5,26 +5,55 @@ class ItemRecomender
   def self.similar(item, max, lost)
     recomendeds = []
     stemmer = StemmerPTBR.new
-    item_words = (item.description + " " + item.title).sub("\n", " ").delete("^[a-z\s-]").split(" ")
-    item_comparable = item_words.join(" ")
+
+    item_title = normalize(item.title, stemmer)
+    item_description = normalize(item.description, stemmer)
     
     for x in Item.where(:lost => lost, :returned => false) do
-      corpus = TfIdfSimilarity::Collection.new
+      title = TfIdfSimilarity::Collection.new
       
-      x_words = (x.description + " " + x.title).sub("\n", " ").delete("^[a-z\s-]").split(" ")
-      x_comparable = x_words.join(" ")
+      x_title = normalize(x.title, stemmer)
       
-      corpus << TfIdfSimilarity::Document.new(item_comparable)
-      corpus << TfIdfSimilarity::Document.new(x_comparable)
-      puts item_comparable
-      puts x_comparable
-      puts corpus.similarity_matrix[1]
+      title << TfIdfSimilarity::Document.new(item_title)
+      title << TfIdfSimilarity::Document.new(x_title)
       
-      if corpus.similarity_matrix[1] > 0.32
+      puts "TITLE: " + item_title + " - " + x_title
+      puts title.similarity_matrix[1]
+      
+      if title.similarity_matrix[1] > 0.32
         recomendeds.push x unless x == item || recomendeds.size > max
-      end      
+      else
+        description = TfIdfSimilarity::Collection.new
+        
+        x_description = normalize(x.description, stemmer)
+        
+        description << TfIdfSimilarity::Document.new(item_description)
+        description << TfIdfSimilarity::Document.new(x_description)
+
+        puts "DESCRICAO: " + item_description + " - " + x_description
+        puts description.similarity_matrix[1]
+        if description.similarity_matrix[1] > 0.25
+          recomendeds.push x unless x == item || recomendeds.size > max
+        end
+      end
     end
-  
+    
     return recomendeds
-  end 
+  end
+  
+  private 
+  
+  def self.normalize(text, stemmer)
+    tokens = []
+    words = text.sub("\n", " ").delete("^[a-z\s-]").split(" ")
+    for word in words
+      tokens.push(stemmer.stem(word))
+    end
+    normalized = tokens.join(" ")
+    normalized
+  end
+  
+  def self.compare(a, b)
+    
+  end  
 end
