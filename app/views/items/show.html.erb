@@ -75,7 +75,7 @@
 				<div class="five columns center end" style="padding: 10px; margin:10px">
 					<%= link_to(item_path(recomended)) do %>
 						<span>
-							<%= image_tag @item.user.avatar.url(:thumb) %>
+							<%= image_tag recomended.main_image_thumb %>
 							<p><%= recomended.title %></p>
 						</span>
 					<% end %>
