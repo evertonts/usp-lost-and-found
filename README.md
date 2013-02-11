@@ -16,9 +16,10 @@ JAVA 6 ou superior
 Instalando:
 
 ```bash
-	bundle install
-
+bundle install
+```
 Rodando:
 
 ```bash
-	rails server
+rails server
+```
