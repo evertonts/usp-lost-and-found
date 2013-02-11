@@ -1,4 +1,24 @@
-usp-lost-and-found
+ACHUSP
 ==================
 
-Lost and found system for University of São Paulo
+Sistema de achados e perdidos para a Universidade de São Paulo
+
+---------------
+Instalação
+
+Requisitos:
+
+ImageMagick
+GSL (Gnu Scientific Library)
+Ruby 1.9.2
+JAVA 6 ou superior
+
+Instalando:
+
+```bash
+	bundle install
+
+Rodando:
+
+```bash
+	rails server
