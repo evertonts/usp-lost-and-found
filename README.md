@@ -9,8 +9,11 @@ Instalação
 Requisitos:
 
 ImageMagick
+
 GSL (Gnu Scientific Library)
+
 Ruby 1.9.2
+
 JAVA 6 ou superior
 
 Instalando:
