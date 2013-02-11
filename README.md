@@ -3,8 +3,8 @@ ACHUSP
 
 Sistema de achados e perdidos para a Universidade de São Paulo
 
-----------------
 Instalação
+----------
 
 Requisitos:
 
