@@ -23,3 +23,8 @@ Rodando:
 ```bash
 rails server
 ```
+
+Iniciando o solr em ambiente de desenvolvimento
+```bash
+rake sunspot:solr:start
+
