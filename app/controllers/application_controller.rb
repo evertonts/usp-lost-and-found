@@ -3,9 +3,9 @@
 class ApplicationController < ActionController::Base
     
   protect_from_forgery
+  
   include SessionsHelper
   
-  protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
       begin
