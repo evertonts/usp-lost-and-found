@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/evertonts/usp-lost-and-found/badges/gpa.svg)](https://codeclimate.com/github/evertonts/usp-lost-and-found)
+
 ACHUSP
 ==================
 
