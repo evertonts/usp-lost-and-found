@@ -23,7 +23,7 @@ gem "rolify", ">= 3.1.0"
 gem "simple_form"
 gem "paperclip", "~> 3.0"
 gem 'rails-translate-routes'
-gem "passenger", "~> 3.0.17" 
+gem "passenger", "~> 5.1.0" 
 gem 'validates_timeliness', '~> 3.0'
 gem 'mysql2'
 gem 'acts-as-taggable-on'
