@@ -88,7 +88,7 @@ GEM
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
     fastthread (1.0.7)
-    ffi (1.1.5)
+    ffi (1.11.1)
     fssm (0.2.9)
     gherkin (2.11.5)
       json (>= 1.4.6)
