@@ -68,7 +68,6 @@ GEM
       capybara (>= 1.1.2)
       cucumber (>= 1.1.8)
       nokogiri (>= 1.5.0)
-    daemon_controller (1.1.0)
     database_cleaner (0.9.1)
     devise (2.1.2)
       bcrypt-ruby (~> 3.0)
@@ -87,7 +86,6 @@ GEM
     factory_girl_rails (4.1.0)
       factory_girl (~> 4.1.0)
       railties (>= 3.0.0)
-    fastthread (1.0.7)
     ffi (1.1.5)
     fssm (0.2.9)
     gherkin (2.11.5)
@@ -125,14 +123,12 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
-    passenger (3.0.18)
-      daemon_controller (>= 1.0.0)
-      fastthread (>= 1.0.1)
+    passenger (5.3.2)
       rack
       rake (>= 0.8.1)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
-    rack (1.4.1)
+    rack (1.4.7)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
@@ -158,7 +154,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (~> 0.14.6)
-    rake (10.0.1)
+    rake (13.0.6)
     rdoc (3.12)
       json (~> 1.4)
     rolify (3.2.0)
@@ -251,7 +247,7 @@ DEPENDENCIES
   launchy (>= 2.1.0)
   mysql2
   paperclip (~> 3.0)
-  passenger (~> 3.0.17)
+  passenger (~> 5.3.2)
   rails (= 3.2.2)
   rails-translate-routes
   rails3-jquery-autocomplete
